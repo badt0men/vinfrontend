@@ -35,6 +35,7 @@ export const Header = () => {
           
           </HStack>
           <Box as="button" ml="6" fontSize="16" p="1" rounded="md" bg={mode('gray.100', 'gray.500')} onClick={toggleColorMode}>
+            {/* Color switch icon */}
             <IoInvertMode color={colorMode === 'light' ? 'Dark' : 'Light'} />
           </Box>
          </Flex>
