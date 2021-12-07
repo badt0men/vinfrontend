@@ -14,14 +14,14 @@ import { HTMLMotionProps, motion, Variants } from 'framer-motion'
 import * as React from 'react'
 import FocusLock from 'react-focus-lock'
 import {
-  HiBookOpen,
-  HiCloudDownload,
-  HiCurrencyDollar,
-  HiOutlineMenu,
   HiOutlineX,
-  HiQuestionMarkCircle,
   HiMenuAlt3,
 } from 'react-icons/hi'
+import { RiHome5Fill } from 'react-icons/ri'
+import {GiMultiDirections} from 'react-icons/gi'
+import {BsPatchQuestionFill} from 'react-icons/bs'
+import {FaBlog} from 'react-icons/fa'
+import {MdContacts} from 'react-icons/md'
 import { RemoveScroll } from 'react-remove-scroll'
 import { NavLink } from './NavLink'
 
@@ -110,7 +110,7 @@ export const MobileNav = () => {
         </RemoveScroll>
         <FocusLock disabled={!show} returnFocus>
           <Box
-            bg={mode('white', 'gray.700')}
+            bg={mode('white', 'deepBlue.500')}
             shadow="lg"
             rounded="lg"
             ref={ref}
@@ -136,10 +136,11 @@ export const MobileNav = () => {
                 </Box>
               </Flex>
               <SimpleGrid as="nav" gap="6" mt="8" columns={{ base: 1, sm: 2 }}>
-                <NavLink.Mobile icon={HiCloudDownload}>Product</NavLink.Mobile>
-                <NavLink.Mobile icon={HiCurrencyDollar}>Pricing</NavLink.Mobile>
-                <NavLink.Mobile icon={HiBookOpen}>Resources</NavLink.Mobile>
-                <NavLink.Mobile icon={HiQuestionMarkCircle}>Help</NavLink.Mobile>
+                <NavLink.Mobile icon={RiHome5Fill}>Home</NavLink.Mobile>
+                <NavLink.Mobile icon={GiMultiDirections}>Guide</NavLink.Mobile>
+                <NavLink.Mobile icon={BsPatchQuestionFill}>FAQ</NavLink.Mobile>
+                <NavLink.Mobile icon={FaBlog}>Blog</NavLink.Mobile>
+                <NavLink.Mobile icon={MdContacts}>Contact</NavLink.Mobile>
               </SimpleGrid>
               <VStack mt="8" spacing="4">
                 <Button w="full" bgGradient='linear(to-t, red.200, red.100)' rounded="md" color="white" _hover={{bgGradient: 'linear(to-r, red.200, red.100)'}}>

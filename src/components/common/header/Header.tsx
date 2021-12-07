@@ -21,8 +21,8 @@ const LogoDark =  <img src="../image/logo/ongadLogoALt.svg" width="70" alt="logo
 export const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <Box minH="480px">
-      <Box Box maxW="7xl" mx="auto" py={{base: '4', md: '3'}} px={{ base: '6', md: '14' }} bg={mode('white', 'deepBlue.500')} h={{base: '50', md: '10'}}>
+    <Box>
+      <Box maxW="7xl" mx="auto" py={{base: '4', md: '3'}} px={{ base: '6', md: '14' }} bg={mode('white', 'deepBlue.500')} h={{base: '50', md: '10'}}>
          <Flex justify="end" fontWeight="medium" fontSize="12">
          <HStack spacing="8">
                 {/* <Link href="/">Sample Requests</Link> */}
