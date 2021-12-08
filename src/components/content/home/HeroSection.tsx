@@ -19,7 +19,7 @@ export default function HeroSection():JSX.Element {
                       <Box w="full" py="8">
                           <Stack direction={['column', 'row']} spacing="4">
                               <Box w={['100%', '75%']}>
-                                <Input variant='filled' fontSize="12px"  placeholder='Enter  VIN Number' color="skyBlue" />
+                                <Input variant='filled' fontSize="12px"  placeholder='Enter  VIN Number' color="skyBlue"  focusBorderColor="skyBlue"/>
                               </Box>
                               <Box>
                                 <Button w={['100%', '100%']} bgGradient="linear(to-t, red.200, red.100)" rounded="md" color="white" _hover={{bgGradient: "linear(to-r, red.200, red.100)"}} fontSize="13px" fontWeight="medium">

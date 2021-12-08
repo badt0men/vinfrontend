@@ -9,9 +9,7 @@ const overrides = {
           color: mode('gray.800', 'whiteAlpha.900')(props),
           bg: mode('white', 'gray.800')(props),
           lineHeight: 'base',
-          _focus: {
-            outline: 'none',
-          },
+          focusBorderColor: 'red.100',
           _focusWithin: {
             outline: 'none',
           },
