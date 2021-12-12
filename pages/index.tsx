@@ -5,6 +5,7 @@ import Head from 'next/head'
 import HeroSection from '../src/components/content/home/HeroSection'
 import HistoryReport from '../src/components/content/home/HistoryReport'
 import WhatWeOffer from '../src/components/content/home/WhatWeOffer'
+import Benefit from '../src/components/content/home/Benefit'
 
 const Index: NextPage = () => {
   return (
@@ -18,6 +19,7 @@ const Index: NextPage = () => {
     <HeroSection />
     <HistoryReport />
     <WhatWeOffer />
+    <Benefit />
     </>
   )
 }

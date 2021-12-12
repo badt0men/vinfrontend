@@ -33,7 +33,7 @@ export default function WhatWeOffer() {
                                     <Heading as="p" fontSize="14">Find out more</Heading> 
                                     <BsArrowRight />
                                     </HStack>
-                                </Button>
+                                </Button> 
                             </Box>
                             <Spacer />
                         </Box>
