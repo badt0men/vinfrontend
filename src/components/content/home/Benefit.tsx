@@ -6,13 +6,13 @@ import {RiQuestionFill } from 'react-icons/ri'
 export default function Benefit() {
     return (
         <Box maxW="7xl" mx="auto">
-            <Flex pl={["0","32"]} py={["16", "20"]}  direction={["column", "row"]} bgImage="url('../image/assets/blob.svg')" bgPosition={["center 100%", "100%"]} bgRepeat="no-repeat" bgSize={["400px", "550px"]} >
+            <Flex pl={["8","32"]} py={["16", "20"]}  direction={["column", "row"]} bgImage="url('../image/assets/blob.svg')" bgPosition={["center 100%", "100%"]} bgRepeat="no-repeat" bgSize={["400px", "550px"]} >
                 <Box>
                         <VStack>
                             <Box>
                             <Heading as="h1" fontSize={["20","48"]} color={mode('deepBlue.100', 'skyBlue')} fontWeight="medium">Benefits of Checking<br/> Vehicle History Report </Heading>
                             <Text py="8" fontSize={["16","18"]} color={mode('headingColor', 'skyBlue')} fontWeight="regular">
-                            It’s very important to know car history when you
+                            It’s very important to know a vehicle history when you
                             are buying<br/> a vehicle on the secondary market.
                             Car history check is a must<br/> especially with such
                             a large used car market in Nigeria.<br/>
