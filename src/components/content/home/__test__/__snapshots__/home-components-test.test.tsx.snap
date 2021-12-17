@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage Test should render all 5 \`{five}\` componenets correctly 1`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 \`{five}\` componenets correctly 2`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 \`{five}\` componenets correctly 3`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 \`{five}\` componenets correctly 4`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 \`{five}\` componenets correctly 5`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 componenets correctly 1`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 componenets correctly 2`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 componenets correctly 3`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 componenets correctly 4`] = `ShallowWrapper {}`;
+
+exports[`Homepage Test should render all 5 componenets correctly 5`] = `ShallowWrapper {}`;

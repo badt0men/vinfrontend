@@ -15,6 +15,7 @@ const colors = {
       500: '#1A202C',
     },
     heroOverlay: 'rgba(37, 45, 75, 0.8)',
+    'star-color': '#FFC700',
   }
   
   const fonts = {
