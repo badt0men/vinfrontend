@@ -1,9 +1,8 @@
-import { Box, Heading, useColorModeValue as mode, Text, Flex, Grid, SimpleGrid, HStack } from '@chakra-ui/react'
+import { Box, Heading, useColorModeValue as mode, Text, Flex, Grid, HStack } from '@chakra-ui/react'
 import React from 'react'
 import { FaQuoteLeft } from 'react-icons/fa'
 import { IoStarSharp, IoStarOutline } from 'react-icons/io5'
 import Slider from "react-slick";
-
 
 type Props = {
     imageUrl: string,
@@ -48,30 +47,27 @@ const settings = {
           }
         }
       ]
-  
   };
 
 export default function UserReview() {
     return (
-        <Box maxW="7xl" mx="auto" bgColor={mode("skyBlue", "deepBlue.100")} mt={["100%", "0"]} pb={["32", "52"]}>
-            <Box pt="24" pb="8">
+        <Box maxW="7xl" mx="auto" bgColor={mode("skyBlue", "deepBlue.100")} mt={["90%", "0"]} pb={["32", "52"]}>
+            <Box pt="20" pb="8">
                 <Heading as="h1" fontSize="28" fontWeight="medium" textAlign="center">Users Review</Heading>
                 <Text textAlign="center" py="6" px={["6", "0"]} fontSize={["17","16"]} fontWeight="regular">Whether you’re just buying a car, or just learning about your own <br />We’ve got you covered</Text>
             </Box>
             <Box maxW="5xl" mx="auto" pb="16">
                 <Slider {...settings}>
                 {ReviewItems.map(review => (
-                    <Grid w="320px" h="240px" maxW="95%" mt="16" bg={mode('white', 'deepBlue.500')} key="index" rounded="xl"> 
+                    <Grid w="320px" h="240px" maxW="95%" mt="14" bg={mode('white', 'deepBlue.500')} key="index" rounded="xl"> 
                         <GridComponent imageUrl={review.imageUrl} name={review.name} review={review.review} rating={review.star} position={review.position} />
                     </Grid>
                     ))}
                 </Slider>
-                
             </Box>
         </Box>
     )
 }
-
 
 const GridComponent = (props: Props) => {
     return (
@@ -123,15 +119,22 @@ const GridComponent = (props: Props) => {
             imageUrl: '../image/assets/userAvater2.jpeg'
         },
         {
-            name: 'Babatunde Bakare',
+            name: 'Bolingo Shepards',
             position: 'Photographer',
             review: 'A test drive of a car you are going to buy shouldn’t be like a calm Sunday cruise. You have to be prepared for it, know what to expect, what is right and what is wrong.',
             star: 1,
             imageUrl: '../image/assets/userAvater3.jpeg'
         },
         {
-            name: 'Babatunde Bakare',
-            position: 'Photographer',
+            name: 'Matt KaySule',
+            position: 'Web Developer',
+            review: 'A test drive of a car you are going to buy shouldn’t be like a calm Sunday cruise. You have to be prepared for it, know what to expect, what is right and what is wrong.',
+            star: 1,
+            imageUrl: '../image/assets/userAvater3.jpeg'
+        },
+        {
+            name: 'Greg Shaw',
+            position: 'Engineer',
             review: 'A test drive of a car you are going to buy shouldn’t be like a calm Sunday cruise. You have to be prepared for it, know what to expect, what is right and what is wrong.',
             star: 1,
             imageUrl: '../image/assets/userAvater3.jpeg'

@@ -7,9 +7,9 @@ const ListIcon = <Image src="../image/icons/point.svg" boxSize="16px" objectFit=
 
 export default function WhatWeOffer() {
     return (
-        <Box maxW="7xl" mx="auto" bg={mode('skyBlue', 'deepBlue.100')} minH={["800", "0"]}>
+        <Box maxW="7xl" mx="auto" bg={mode('skyBlue', 'deepBlue.100')} minH={["800", "0"]} pb={['12', '0']}>
             <Flex pl={["0","16"]} py={["16", "20"]}  direction={["column", "row"]} bgImage="url('../image/icons/girlie.svg')" bgPosition={["center 100%", "center right"]} bgRepeat="no-repeat" bgSize={["400px", "750px"]}>
-                <Box px={[0, 20]} pb={["40", "0"]}>
+                <Box px={[0, 20]} pb={["44", "0"]} mb={['16','0']}>
                     <VStack>
                         <Box>
                         <Heading as="h1" fontSize={["18","22"]} fontWeight="medium" color={mode('deepBlue.100', 'skyBlue')}>What we Offer</Heading>
@@ -19,7 +19,7 @@ export default function WhatWeOffer() {
                                 <ListItem pt="2" key={list.id}>
                                     <HStack>
                                     {ListIcon} 
-                                    <Heading as="p" fontSize="15" fontWeight="medium"  color={mode('headingColor', 'skyBlue')}>
+                                    <Heading as="p" fontSize="15" fontWeight="regular"  color={mode('headingColor', 'skyBlue')}>
                                     {list.text}
                                     </Heading>
                                     </HStack>

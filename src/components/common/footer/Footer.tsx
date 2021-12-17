@@ -7,11 +7,10 @@ import Link from 'next/link'
 
 
 export default function Footer() {
-    
     return (
         <>
         <Box maxW="7xl" mx="auto">
-            <Box bgImage={mode("../image/assets/footerWave.svg","../image/assets/footerWave2.svg")} bgSize="cover" h={["100px","180px"]} mt={["-100px","-150px"]}/>
+            <Box bgImage={mode("../image/assets/footerWave.svg","../image/assets/footerWave2.svg")} bgSize="cover" h={["120px","180px"]} mt={["-100px","-150px"]}/>
             <Box bgColor={mode("deepBlue.100", "")} pb={["0","100px"]}>
                 <Box maxW="5xl" mx="auto" >
                 <Flex justify="space-between" direction={[ 'column', 'row' ]} px={["8","0"]}>
@@ -43,7 +42,7 @@ export default function Footer() {
                         <List spacing={3} fontWeight="medium">
                             {
                                 Information.map(item => (
-                                    <Link href={item.link} key="index">
+                                    <Link href={item.link} key={item.id}>
                                         <ListItem>
                                         {item.menu}
                                         </ListItem>
@@ -61,7 +60,7 @@ export default function Footer() {
                         <List spacing={3} fontWeight="medium">
                             {
                                 QuickLinks.map(item => (
-                                    <Link href={item.link} key="index">
+                                    <Link href={item.link} key={item.id}>
                                         <ListItem >
                                         {item.menu}
                                         </ListItem>
@@ -81,10 +80,9 @@ export default function Footer() {
                  <HStack fontWeight={["medium", "regular" ]} fontSize="14px" spacing={4} mx={["auto", "0"]}>
                      {
                          footerLink.map(item => (
-                             <Link href={item.link} key="index" passHref>
+                             <Link href={item.link} key={item.id} passHref>
                                 <Text>{item.menu}</Text>
                              </Link>
-                            
                          ) )
                      }
                  </HStack>
@@ -98,18 +96,22 @@ export default function Footer() {
 
 const Information = [
     {
+        id: 1,
         menu: "Blog",
         link: "#",
     },
     {
+        id: 2,
         menu: "Guide",
         link: "#",
     },
     {
+        id: 3,
         menu: "FAQ",
         link: "#",
     },
     {
+        id: 4,
         menu: "Contact Us",
         link: "#",
     },
@@ -117,18 +119,22 @@ const Information = [
 
 const QuickLinks = [
     {
+        id: 1,
         menu: "Buy Cars",
         link: "#",
     },
     {
+        id: 2,
         menu: "Supports",
         link: "#",
     },
     {
+        id: 3,
         menu: "Forum",
         link: "#",
     },
     {
+        id: 4,
         menu: "VIN Decoder",
         link: "#",
     },
@@ -136,14 +142,17 @@ const QuickLinks = [
 
 const footerLink = [
     {
+        id: 1,
         menu: "Legal",
         link: "#",
     },
     {
+        id: 2,
         menu: "Terms of services",
         link: "#",
     },
     {
+        id: 3,
         menu: "Privacy policy",
         link: "#",
     },

@@ -56,19 +56,23 @@ export default function Benefit() {
 							>
 								Benefits of Checking<br /> Vehicle History Report{' '}
 							</Heading>
-							<Text
+							<Box 
 								py="8"
-								fontSize={[ '16', '18' ]}
+								fontSize={[ '15', '17' ]}
 								color={mode('headingColor', 'skyBlue')}
 								fontWeight="regular"
-							>
-								It’s very important to know a vehicle history when you are buying<br /> a vehicle on the
-								secondary market. Car history check is a must<br /> especially with such a large used
-								car market in Nigeria.<br />
-								The likelihood of buying a car after an accident, fire, flood <br />or crime is very
-								high. Vehicle information will help you avoid problems.
+								maxW="600px"
+								pr={[ '8', '0' ]}
+								>
+							<Text>
+								It’s very important to know a vehicle history when you are buying a vehicle on the
+								secondary market. Car history check is a must especially with such a large used
+								car market in Nigeria.
+								The likelihood of buying a car after an accident, fire, flood or crime is very
+								high.<br/> Vehicle information will help you avoid problems.
 							</Text>
-							<Heading as="h1" fontWeight="medium" fontSize="16">
+							</Box>
+							<Heading as="h1" fontWeight="medium" fontSize={['15', '16']}>
 								Want a free consultation from ONGAD experts?
 							</Heading>
 							<Spacer my="8" />

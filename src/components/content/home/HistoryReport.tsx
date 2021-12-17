@@ -9,14 +9,14 @@ export default function HistoryReport() {
             Shorten And Amplify Your<br/>
             Car History Report
             </Heading>
-            
-            <Heading as="h2" fontSize={['14', '22']} py="10" textAlign="center" color={mode('subHeadingColor', 'skyBlue')} fontWeight="regular">
+            <Heading as="h2" fontSize={['14', '22']} py="8" textAlign="center" color={mode('subHeadingColor', 'skyBlue')} fontWeight="regular">
                 Meet Our Intuitive Platform
             </Heading>
         </Box>
-        <Box py="6">
-            <Box maxW="5xl" mx="auto" p={[4, 8]}>
-                <SimpleGrid columns={[2, 4]} spacing="10">
+        <Box py="2">
+            <Box maxW="5xl" mx="auto">
+              <Box p={[4, 8]} mr={["4", "0"]}>
+              <SimpleGrid columns={[2, 4]} spacing="10">
                   {boxItems.map(boxItem => 
                     <Box bg={mode('white', 'deepBlue.100')} h="180px" w="180px" shadow="lg" key={boxItem.id}>
                       <VStack px="4">
@@ -28,9 +28,11 @@ export default function HistoryReport() {
                     </Box>
                     )}
                 </SimpleGrid>
-                <Box>
-                    <Heading as="p" fontSize={['17', '19']} textAlign="center" my="16" color={mode('subHeadingColor', '')} fontWeight="light">
-                    As part of our giveback to the community, ONGAD provides <b>basic free VIN check report</b><br/> to the public to determine the vehicle is a lemon, salvaged or has flooded condition.<br/> We also provide historical mileage/sales records for free! No credit card required!
+              </Box>
+                
+                <Box px={['8', '16']}>
+                    <Heading as="p" fontSize={['17', '19']} textAlign="center" my="8" color={mode('subHeadingColor', '')} fontWeight="light">
+                    As part of our giveback to the community, ONGAD provides <b>basic free VIN check report</b> to the public to determine the vehicle is a lemon, salvaged or has flooded condition. We also provide historical mileage/sales records for free! No credit card required!
                     </Heading>
                 </Box>
             </Box>
