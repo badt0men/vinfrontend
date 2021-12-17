@@ -18,7 +18,7 @@ const LogoLight = <img src="../image/logo/ongadLogo.svg" width="70" alt="logo" /
 const LogoDark =  <img src="../image/logo/ongadLogoALt.svg" width="70" alt="logo-alt" />
 
 
-export const Header = () => {
+const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Box>
@@ -75,3 +75,6 @@ export const Header = () => {
     </Box>
   )
 }
+
+
+export default Header;

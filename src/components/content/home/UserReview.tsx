@@ -53,7 +53,7 @@ const settings = {
 
 export default function UserReview() {
     return (
-        <Box maxW="7xl" mx="auto" bgColor={mode("skyBlue", "deepBlue.100")} mt={["100%", "0"]} pb={["8", "16"]}>
+        <Box maxW="7xl" mx="auto" bgColor={mode("skyBlue", "deepBlue.100")} mt={["100%", "0"]} pb={["32", "52"]}>
             <Box pt="24" pb="8">
                 <Heading as="h1" fontSize="28" fontWeight="medium" textAlign="center">Users Review</Heading>
                 <Text textAlign="center" py="6" px={["6", "0"]} fontSize={["17","16"]} fontWeight="regular">Whether you’re just buying a car, or just learning about your own <br />We’ve got you covered</Text>
