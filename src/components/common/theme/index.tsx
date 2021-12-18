@@ -5,7 +5,7 @@ import { extendTheme } from '@chakra-ui/react'
 import styles from './styles'
 
 //Foundational style overrides
-import {colors, fonts, fontWeights} from './foundations/index'
+import {colors, fonts, fontWeights, letterSpacings} from './foundations/index'
 
 // Component style overrides
 import {button} from './components/index'
@@ -16,6 +16,7 @@ const myOverrides = {
   colors,
   fonts,
   fontWeights,
+  letterSpacings,
   // Other foundational style overrides go here
   
   components: {

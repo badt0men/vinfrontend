@@ -19,7 +19,7 @@ export default function HeroSection():JSX.Element {
                       <Box w="full" py="8">
                           <Stack direction={['column', 'row']} spacing="4">
                               <Box w={['100%', '75%']}>
-                                <Input variant='filled' fontSize="12px"  placeholder='Enter  VIN Number' color="skyBlue"  focusBorderColor="skyBlue"/>
+                                <Input fontSize="14px" fontWeight="medium" placeholder='Enter VIN Number' color="skyBlue"  focusBorderColor="skyBlue" letterSpacings="widest"/>
                               </Box>
                               <Box>
                                 <Button w={['100%', '100%']} bgGradient="linear(to-t, red.200, red.100)" rounded="md" color="white" _hover={{bgGradient: "linear(to-r, red.200, red.100)"}} fontSize="13px" fontWeight="medium">
@@ -27,7 +27,7 @@ export default function HeroSection():JSX.Element {
                                   Search</Button>
                               </Box>
                           </Stack>
-                          <Text fontSize="11px" fontStyle="italic" py="2" color="skyBlue">Want to test with a random VIN?</Text>
+                          <Text fontSize="11px" fontStyle="italic" py="2" color="skyBlue">Click here to test with a random VIN. </Text>
                           <Box>
                               <Heading as="h4" fontSize={{base: '16', md:'18'}} color="skyBlue" fontWeight="regular" py="2" pr={{base: '4', md:'0'}}>Research any vehicle by VIN Number for free. Be Smart.</Heading>
                           </Box>
