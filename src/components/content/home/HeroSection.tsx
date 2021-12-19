@@ -15,7 +15,7 @@ export default function HeroSection():JSX.Element {
     setVin(vinRef.current.value)
     const {pathname} = Router
     if(pathname == '/' ){
-        Router.push("/vin/"+vin)
+        Router.push("/vin/"+vinRef.current.value)
     }
   }
   
