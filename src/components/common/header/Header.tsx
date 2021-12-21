@@ -26,9 +26,9 @@ const Header = () => {
          <Flex justify="end" fontWeight="medium" fontSize="12">
          <HStack spacing="8">
                 {/* <Link href="/">Sample Requests</Link> */}
-                <Link href="/">Business</Link>
-                <Link href="/">Careers</Link>
-                <Link href="/">Media</Link>
+                <Link href="/business">Business</Link>
+                <Link href="/careers">Careers</Link>
+                <Link href="/media">Media</Link>
                 <Box borderWidth="1px" borderColor={mode('deepBlue.100','skyBlue')} px="4" py="0.5" rounded="sm">
                   <Link href="/">Login</Link>
                 </Box>
@@ -44,13 +44,15 @@ const Header = () => {
         <Box maxW="7xl" mx="auto" py="4" px={{ base: '6', md: '8' }}>
           <Flex as="nav" justify="space-between">
             <HStack spacing="32">
-              {mode('light', 'dark') === 'light' ? LogoLight : LogoDark}
-              <HStack display={{ base: 'none', lg: 'flex' }} spacing="10">
-                <NavLink.Desktop active>Home</NavLink.Desktop>
-                <NavLink.Desktop>Guide</NavLink.Desktop>
-                <NavLink.Desktop>FAQ</NavLink.Desktop>
-                <NavLink.Desktop>Blog</NavLink.Desktop>
-                <NavLink.Desktop>Contact</NavLink.Desktop>
+              <Link href="/">
+                {mode('light', 'dark') === 'light' ? LogoLight : LogoDark}
+              </Link>
+              <HStack display={{ base: 'none', lg: 'flex' }} spacing="10" fontWeight="medium" color={mode('gray.600', 'gray.300')}>
+                <NavLink.Desktop active href="/">Home</NavLink.Desktop>
+                <NavLink.Desktop href="/guide">Guide</NavLink.Desktop>
+                <NavLink.Desktop href="/faq">FAQ</NavLink.Desktop>
+                <NavLink.Desktop href="/blog">Blog</NavLink.Desktop>
+                <NavLink.Desktop href="/guide">Contact</NavLink.Desktop>
               </HStack>
             </HStack>
             <Flex align="center">

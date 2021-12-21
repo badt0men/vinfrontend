@@ -10,7 +10,7 @@ const Index: NextPage = () => {
   return (
     <>
     <Head>
-      <title>OnGAD VIN Check</title>
+      <title>{process.env.title}</title>
       <meta name="description" content="OnGAD VIN Check" />
       <meta name="keywords" content="OnGAD, Vehicle Vin Checker" />
     </Head>

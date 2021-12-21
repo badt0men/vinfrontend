@@ -98,22 +98,22 @@ const Information = [
     {
         id: 1,
         menu: "Blog",
-        link: "#",
+        link: "/blog",
     },
     {
         id: 2,
         menu: "Guide",
-        link: "#",
+        link: "/guide",
     },
     {
         id: 3,
         menu: "FAQ",
-        link: "#",
+        link: "/faq",
     },
     {
         id: 4,
         menu: "Contact Us",
-        link: "#",
+        link: "/contact",
     },
 ]
 
@@ -136,7 +136,7 @@ const QuickLinks = [
     {
         id: 4,
         menu: "VIN Decoder",
-        link: "#",
+        link: "/",
     },
 ]
 

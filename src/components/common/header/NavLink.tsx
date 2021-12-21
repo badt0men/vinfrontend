@@ -1,30 +1,38 @@
 import {
   Box,
-  chakra,
   Flex,
   HTMLChakraProps,
   Icon,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import * as React from 'react'
+import Link from 'next/link'
 
 interface DesktopNavLinkProps extends HTMLChakraProps<'a'> {
   active?: boolean
 }
 
 const DesktopNavLink = (props: DesktopNavLinkProps) => {
-  const { active, ...rest } = props
+  const { active, href, ...rest }:any = props
+
+  // return (
+  //   <Flex as="a"
+  //     href={href}
+  //     aria-current={active ? 'page' : undefined}
+  //     fontWeight="medium"
+  //     color={mode('gray.600', 'gray.300')}
+  //     {...rest}
+  //     _activeLink={{
+  //       color: mode('deepBlue.500', 'skyBlue'),
+  //       fontWeight: 'medium',
+  //     }}
+    
+  //   />
+  // )
   return (
-    <chakra.a
-      href="#"
-      aria-current={active ? 'page' : undefined}
-      fontWeight="medium"
-      color={mode('gray.600', 'gray.300')}
+    <Link
+      href={href}
       {...rest}
-      _activeLink={{
-        color: mode('deepBlue.500', 'skyBlue'),
-        fontWeight: 'medium',
-      }}
     />
   )
 }

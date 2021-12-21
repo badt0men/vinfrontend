@@ -1,24 +1,48 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {Box, Flex, Heading, Text, VStack, Input, Button, Stack} from '@chakra-ui/react'
 import {RiSearch2Line} from 'react-icons/ri'
 import vinStore from '../../../../store/store';
 import Router from 'next/router'
 
-export default function HeroSection():JSX.Element {
-
+export default function HeroSection() {
+  
   const vin = vinStore(state => state.vin)
   const setVin = vinStore(set => set.setVin)
   const vinRef = useRef(vin)
   
-  const searchVin = (e:any) => {
-    e.preventDefault()
+  //handle the vin Chnage event
+  const handleChange = (event: any) => {
+    setVin(event.target.value)
+    vinRef.current.value = event.target.value
+  }
+
+  //Search the vin 
+  const searchVin = (event:any) => {
+    event.preventDefault()
     setVin(vinRef.current.value)
     const {pathname} = Router
     if(pathname == '/' ){
         Router.push("/vin/"+vinRef.current.value)
     }
+    vinRef.current.value = ''
   }
+
+  //Generating Random VIN
+  const testVIN = [
+    '5TENX22N76Z245036',
+    'WBA5B3C50GG252337',
+    'SCBFR7ZA5CC072256',
+    '4F2YU09152KM31556',
+    '4DRBWAFN06A207518',
+  ]
+  const randVin = Math.floor(Math.random() * testVIN.length) //to get an index
+  const generatedVIN = testVIN[randVin]; //to get the value of the index in the array
   
+  const generateVIN = (event:any) => {
+    event.preventDefault()
+    vinRef.current.value = generatedVIN
+    setVin(vinRef.current.value)
+  }
   
   return (
     <Box w="full" mx="auto" minH="550" bgImage="url('../image/slide/car.jpeg')" bgPosition="center" bgRepeat="no-repeat" bgSize="cover" bgBlendMode="multiply">
@@ -37,7 +61,7 @@ export default function HeroSection():JSX.Element {
                       <Box w="full" py="8">
                           <Stack direction={['column', 'row']} spacing="4">
                               <Box w={['100%', '75%']}>
-                                <Input ref={vinRef} fontSize="14px" fontWeight="medium" placeholder='Enter VIN' color="skyBlue"  focusBorderColor="skyBlue" textTransform="uppercase" letterSpacing="8px" />
+                                <Input ref={vinRef} fontSize="14px" fontWeight="medium" placeholder='Enter VIN' color="skyBlue"  focusBorderColor="skyBlue" textTransform="uppercase" letterSpacing="8px" onChange={handleChange} />
                               </Box>
                               <Box>
                                 <Button type="submit" w={['100%', '100%']} bgGradient="linear(to-t, red.200, red.100)" rounded="md" color="white" _hover={{bgGradient: "linear(to-r, red.200, red.100)"}} fontSize="13px" fontWeight="medium">
@@ -45,7 +69,11 @@ export default function HeroSection():JSX.Element {
                                   Search</Button>
                               </Box>
                           </Stack>
-                          <Text fontSize="11px" fontStyle="italic" py="2" color="skyBlue">Click here to test with a random VIN. </Text>
+                          <Text fontSize="11px" fontStyle="italic" py="2" color="skyBlue">
+                            <a href="" onClick={generateVIN}>
+                            Click here to test with a random VIN.
+                            </a>
+                              </Text>
                           <Box>
                               <Heading as="h4" fontSize={{base: '16', md:'18'}} color="skyBlue" fontWeight="regular" py="2" pr={{base: '4', md:'0'}}>Research any vehicle by VIN Number for free. Be Smart.</Heading>
                           </Box>
