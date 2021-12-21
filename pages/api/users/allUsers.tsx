@@ -1,11 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { getAllUsers } from '../../../models/userModel';
+// import type { NextApiRequest, NextApiResponse } from 'next'
+// import { getAllUsers } from '../../../models/userModel';
 
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
-    const data = await getAllUsers
-    res.status(200).json(data.rows)
-}
+// export default async function (req: NextApiRequest, res: NextApiResponse) {
+//     const data = await getAllUsers
+//     res.status(200).json(data.rows)
+// }
 
 
 // export default async (req:NextApiRequest, res:NextApiResponse) => {
