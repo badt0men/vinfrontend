@@ -26,9 +26,9 @@ const Header = () => {
          <Flex justify="end" fontWeight="medium" fontSize="12">
          <HStack spacing="8">
                 {/* <Link href="/">Sample Requests</Link> */}
-                <Link href="/business">Business</Link>
-                <Link href="/careers">Careers</Link>
-                <Link href="/media">Media</Link>
+                <Link href="/business" passHref>Business</Link>
+                <Link href="/careers" passHref>Careers</Link>
+                <Link href="/media" passHref>Media</Link>
                 <Box borderWidth="1px" borderColor={mode('deepBlue.100','skyBlue')} px="4" py="0.5" rounded="sm">
                   <Link href="/">Login</Link>
                 </Box>

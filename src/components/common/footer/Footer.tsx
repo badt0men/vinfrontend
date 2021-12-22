@@ -60,7 +60,7 @@ export default function Footer() {
                         <List spacing={3} fontWeight="medium">
                             {
                                 QuickLinks.map(item => (
-                                    <Link href={item.link} key={item.id}>
+                                    <Link href={item.link} key={item.id} passHref>
                                         <ListItem >
                                         {item.menu}
                                         </ListItem>
