@@ -52,7 +52,7 @@ const Header = () => {
                 <NavLink.Desktop href="/guide">Guide</NavLink.Desktop>
                 <NavLink.Desktop href="/faq">FAQ</NavLink.Desktop>
                 <NavLink.Desktop href="/blog">Blog</NavLink.Desktop>
-                <NavLink.Desktop href="/guide">Contact</NavLink.Desktop>
+                <NavLink.Desktop href="/contact">Contact</NavLink.Desktop>
               </HStack>
             </HStack>
             <Flex align="center">

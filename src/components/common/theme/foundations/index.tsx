@@ -5,6 +5,7 @@ const colors = {
     myGray: '#252E4B',
     headingColor: 'rgba(37, 46, 75, 0.8)',
     subHeadingColor: 'rgba(37, 46, 75, 0.6)',
+    linkColor: "#d7485a",
     red: {
       100: '#ED213A',
       200: '#93291E',
