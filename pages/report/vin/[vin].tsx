@@ -12,7 +12,11 @@ export default function Vin() {
         model:{
             name: "",
         },
-        years: [],
+        years: [
+            {
+                year: "",
+            }
+        ],
     })
     useEffect(() => {
         const END_POINT = process.env.VIN_URI+vin+`?apikey=`+process.env.VIN_API_KEY
@@ -91,7 +95,7 @@ export default function Vin() {
             <Box w="40%" py="8" h="100vh" bgColor={mode("skyBlue","deepBlue.100")} zIndex="-10">
                 <Box py="8" px="8" mx="auto">
                     <Heading as="h1" fontWeight="medium" fontSize="18px" pb="8" textAlign="center">VEHICLE IDENTIFICATION REPORT </Heading>
-                    <Text fontWeight="medium" textTransform="uppercase" color="blue.500">{data?.years[0]?.year} {data?.make?.name } {data?.model?.name}</Text>
+                    <Text fontWeight="medium" textTransform="uppercase" color="blue.500">{data.years[0].year} {data?.make?.name } {data?.model?.name}</Text>
                 </Box>
             </Box>
         </Flex>
