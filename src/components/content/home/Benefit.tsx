@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
 	Box,
 	Flex,
@@ -46,7 +46,7 @@ export default function Benefit() {
 	const controls = useAnimation(); //let's you take controll of when animation should start and stop
 	const [ref, inView] = useInView();
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		if (inView) {
 			controls.start("visible")
 		}

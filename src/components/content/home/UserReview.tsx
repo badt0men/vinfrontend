@@ -1,11 +1,12 @@
 import { Box, Heading, useColorModeValue as mode, Text, Flex, Grid, HStack } from '@chakra-ui/react'
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { FaQuoteLeft } from 'react-icons/fa'
 import { IoStarSharp, IoStarOutline } from 'react-icons/io5'
 import Slider from "react-slick";
 import { BoxProps, HeadingProps } from '@chakra-ui/layout'
 import {motion, useAnimation} from "framer-motion"
 import {useInView} from "react-intersection-observer"
+import {reviewTitleVariant, reviewDescriptionVariant, reviewVariant} from "./_homeAnimation"
 
 type Props = {
     id: number,
@@ -61,18 +62,7 @@ export default function UserReview() {
     const controls = useAnimation(); //let's you take controll of when animation should start and stop
     const [ref, inView] = useInView();
 
-    const reviewTitleVariant = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: .5, ease: 'easeIn', delay: .2} },
-        invisible: { opacity: 0, transition: { ease: 'easeOut'} }
-    }
-    const reviewDescriptionVariant = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: .5, ease: 'easeIn', delay: .5} },
-        invisible: { opacity: 0, transition: { ease: 'easeOut'} }
-    }
-    
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (inView) {
             controls.start("visible")
         }
@@ -113,13 +103,8 @@ export default function UserReview() {
 const GridComponent = (props: Props) => {
     const controls = useAnimation(); //let's you take controll of when animation should start and stop
     const [ref, inView] = useInView();
-    const reviewVariant = {
-        hidden: { opacity: 0 },
-        visible: (custom: number) => ({ opacity: 1, transition: { duration: .5, ease: 'easeIn', delay: custom * .2} }),
-        invisible: { opacity: 0, transition: { ease: 'easeOut'} },
-        hover: { scale: 0.95, transition: { duration: .5, ease: 'easeIn'} }
-    }
-    useLayoutEffect(() => {
+    
+    useEffect(() => {
         if (inView) {
             controls.start("visible")
         }
@@ -127,7 +112,7 @@ const GridComponent = (props: Props) => {
             controls.start("invisible")
         }
     }, [controls, inView])
-
+    
 
     return (
     <MotionBox
@@ -164,7 +149,7 @@ const GridComponent = (props: Props) => {
                 <Text fontSize="13" fontWeight="thin" textAlign="left" pt="6">
                     {props.name} |
                 </Text>
-                <Text fontSize="13" fontWeight="medium" textAlign="left" pt="6" color="red.500">
+                <Text fontSize="13" fontWeight="medium" textAlign="left" pt="6" color="teal">
                     {props.position}
                 </Text>
             </HStack>

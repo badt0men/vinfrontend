@@ -25,7 +25,7 @@ export default function HeroSection() {
     event.preventDefault()
     setVin(vinRef.current.value)
     const {pathname} = Router
-    if(pathname == '/' ){
+    if(pathname === '/' ){
         Router.push("/report/vin/"+vinRef.current.value)
     }
     vinRef.current.value = ''
@@ -40,11 +40,11 @@ export default function HeroSection() {
     '4DRBWAFN06A207518',
   ]
   const randVin = Math.floor(Math.random() * testVIN.length) //to get an index
-  const generatedVIN = testVIN[randVin]; //to get the value of the index in the array
+  const randomVIN = testVIN[randVin]; //to get the value of the index in the array
   
   const generateVIN = (event:any) => {
     event.preventDefault()
-    vinRef.current.value = generatedVIN
+    vinRef.current.value = randomVIN
     setVin(vinRef.current.value)
   }
   

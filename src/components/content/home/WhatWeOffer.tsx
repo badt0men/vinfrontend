@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Flex, Heading, List, Image, ListItem, useColorModeValue as mode, VStack, HStack, Button, Spacer } from '@chakra-ui/react'
 import {BoxProps, HeadingProps} from '@chakra-ui/layout'
 import { BsArrowRight } from 'react-icons/bs'
@@ -19,7 +19,7 @@ export default function WhatWeOffer() {
       const controls = useAnimation(); //let's you take controll of when animation should start and stop
       const [ref, inView] = useInView();
       
-      useLayoutEffect(() => {
+      useEffect(() => {
         if (inView) {
           controls.start("visible");
         }

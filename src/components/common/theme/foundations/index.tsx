@@ -3,6 +3,7 @@ const colors = {
     black: '#000000',
     skyBlue: '#F4F6FC',
     myGray: '#252E4B',
+    iconRed: '#E53E3E',
     headingColor: 'rgba(37, 46, 75, 0.8)',
     subHeadingColor: 'rgba(37, 46, 75, 0.6)',
     linkColor: "#d7485a",

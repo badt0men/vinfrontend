@@ -1,5 +1,5 @@
 import { Box, Heading, SimpleGrid, useColorModeValue as mode, VStack, Text, Image, Spacer } from '@chakra-ui/react';
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { BoxProps } from '@chakra-ui/layout';
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -16,7 +16,7 @@ export default function HistoryReport() {
   const controls = useAnimation(); //let's you take controll of when animation should start and stop
   const [ref, inView] = useInView();
   
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible")
     }

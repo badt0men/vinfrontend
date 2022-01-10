@@ -14,8 +14,8 @@ import {FaUserPlus, FaTelegramPlane} from 'react-icons/fa'
 import {IoInvertMode} from 'react-icons/io5'
 import Link from 'next/link'
 
-const LogoLight = <img src="../image/logo/ongadLogo.svg" width="70" alt="logo" />
-const LogoDark =  <img src="../image/logo/ongadLogoALt.svg" width="70" alt="logo-alt" />
+const LogoLight = <img src="/image/logo/ongadLogo.svg" width="70" alt="logo" />
+const LogoDark =  <img src="/image/logo/ongadLogoALt.svg" width="70" alt="logo-alt" />
 
 
 const Header = () => {
