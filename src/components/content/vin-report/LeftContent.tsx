@@ -13,7 +13,17 @@ import {
   useColorModeValue as mode,
   Image,
   Text,
-  BoxProps
+  BoxProps,
+  Spacer,
+  ListIcon,
+  Badge,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import {
@@ -26,21 +36,29 @@ import styles from "./report.module.css";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import {motion} from 'framer-motion' 
+import { MdCheckCircle } from "react-icons/md";
 
 //Left section component
 const LeftSection = ({ data }: any) => {
+
+    ///necessary because of some hydration issue
+    const [vin, setVin] = useState(null);
+    const evin = vinStore(state => state.vin)
+    useEffect(() => {
+        setVin(evin);
+    },[])
   return (
     <>
       <Box w="75%" py="8" pos="relative">
-        <TopMenuSection />
-        <TopContentSection data={data} />
+        <TopMenuSection  vin={vin}/>
+        <TopContentSection data={data} vin={vin} />
       </Box>
     </>
   );
 };
 
-export function TopMenuSection() {
-  const vin = vinStore((state) => state.vin);
+export function TopMenuSection({vin}:any) {
+
   return (
     <>
       <Box
@@ -84,7 +102,7 @@ export function TopMenuSection() {
           </Heading>
           <Link href="#">
             <Heading
-              as="h1"
+              as="h2"
               fontWeight="medium"
               p="3"
               fontSize="14px"
@@ -99,37 +117,35 @@ export function TopMenuSection() {
   );
 }
 
-export function TopContentSection({ data }: any) {
-  const vin = vinStore((state) => state.vin);
-  const [tableData, setTableData] = useState([]);
-  const [initTrim, setInitTrim] = useState(5);
-  const allTableData = _.size(tableItems);
 
+export function TopContentSection({ data , vin }: any) {
+  const [tableData, setTableData] = useState([]);
+  const [initTrim, setInitTrim] = useState(7);
+  const allTableData = _.size(tableItems);
+  const [hideBtn, setHideBtn] = useState(false);
+
+  
   useEffect(() => {
     const items: any = tableItems.slice(0, initTrim);
     setTableData(items);
   }, [initTrim]);
 
   const loadMore = (e: any) => {
-    e.preventDefault();
+    e.preventDefault(); 
     setInitTrim(allTableData);
-    const node: HTMLElement | any = document.getElementById("showAll");
-    node.style.display = "none";
-
-    
+    setHideBtn(true);
   };
+
+  //animation
   const MotionBox = motion<BoxProps>(Box);
   const loadmoreVariants = {
     initial: { opacity: 1, y: 0 }, 
     visible: { opacity: 0, y: 150, transition: { duration: 1, ease: 'easeInOut'} },
-    click: { opacity: 0, y: -150, transition: { duration: 1, ease: 'easeInOut'} }
   }
-  
-
   
   return (
     <>
-      <Box mt="16" maxH="80vh" pb="20%" overflowY="auto" zIndex="300">
+      <Box mt="16" maxH="80vh" pb="20%" overflowY="auto">
         <VStack>
           <Flex w="100%" px="12">
             <Box boxSize="250" minW="250">
@@ -139,32 +155,9 @@ export function TopContentSection({ data }: any) {
                 borderRadius="10px"
               />
               <Box mt="4">
-                <Text
-                  pb="2"
-                  fontSize="11"
-                  fontWeight="semibold"
-                  color={mode("gray.500", "gray.400")}
-                >
-                  {" "}
-                  What is VIN?
-                </Text>
-                <Text
-                  pb="2"
-                  fontSize="11"
-                  fontWeight="semibold"
-                  color={mode("gray.500", "gray.400")}
-                >
-                  {" "}
-                  Where can I find it?
-                </Text>
-                <Text
-                  fontSize="11"
-                  fontWeight="semibold"
-                  color={mode("gray.500", "gray.400")}
-                >
-                  {" "}
-                  What report do I get for free?
-                </Text>
+                <WhatIsVin />
+                <WhereToFindVin />
+                <WhatReportDoIGetForFree />
               </Box>
             </Box>
             <Box ml="8">
@@ -276,22 +269,22 @@ export function TopContentSection({ data }: any) {
                 fontSize="15px"
                 color={mode("subHeadingColor", "gray.400")}
               >
-                {tableData.map((item:any) => (
-                  <Tr key={item.id}>
-                    <Td>{item.title}</Td>
+                {tableData.map(({id, title, value}:any) => (
+                  <Tr key={id}>
+                    <Td>{title}</Td>
                     <Td>
                       <HStack>
-                        {item.value !== null && item.value !== 0 ? (
+                        {value !== null && value !== 0 ? (
                           <>
                             <BsShieldFillCheck color="teal" />
-                            <Text>{item.value} Records Found</Text>{" "}
+                            <Text>{value} Records Found</Text>{" "}
                           </>
-                        ) : item.value === 0 ? (
+                        ) : value === 0 ? (
                           <>
                             <BsShieldFillExclamation color="#b34242" />{" "}
                             <Text> No Records Found </Text>
                           </>
-                        ) : item.value === null ? (
+                        ) : value === null ? (
                           <>
                             <BsShieldSlashFill /> <Text> Unverified</Text>
                           </>
@@ -302,8 +295,7 @@ export function TopContentSection({ data }: any) {
                 ))}
               </Tbody>
             </Table>
-            <MotionBox initial="initial" animate="visible" variants={loadmoreVariants}>
-            <Box
+                <Box
               id="showAll"
               bgGradient={mode(
                 "linear(to-t, gray.200, white)",
@@ -328,13 +320,128 @@ export function TopContentSection({ data }: any) {
                 </Text>
               </Button>
             </Box>
-            </MotionBox>
           </Box>
+          <Spacer py="4" borderBottom="1px" borderColor={mode("gray.200", "gray.700")} />
+          <Box w="90%">
+              <Heading as="h1" py="4" color={mode("headingColor", "")} textAlign={"left"} fontSize="28">
+                  The complete VIN solution
+              </Heading>
+              <Text fontSize="14" fontWeight="regular" textAlign="left" py="4">OnGad VIN check provides the most comprehensive, up to date and insightful car information. Our checks span across, but never limited to:</Text>
+              <SimpleGrid columns={2} spacing="1px">
+                {carInfo.map(({id, name}:any) => (
+                    <Box
+                    textAlign={"left"}
+                    fontSize="15"
+                    mt="2"
+                    color={mode("subHeadingColor", "gray.400")}
+                    key={id}> 
+                    <HStack>
+                    <MdCheckCircle color="teal" />
+                    <Box as="span" fontWeight="regular">
+                    {name}
+                    </Box>
+                    </HStack>
+                    </Box>
+                ))}
+              </SimpleGrid>
+              <Box py="10">
+              <Badge bg={mode("skyBlue", "deepBlue.100")} rounded="md" color={mode("myGray", "skyBlue" )} borderRadius={5}>
+                        <Text fontSize="16px" fontWeight="medium" textTransform="unset"  p="4" >
+                            <Box as ="span" color="red.100">Great News!: </Box> We found {} historical records for this vehicl
+                        </Text>
+              </Badge>
+              </Box>
+          </Box>
+          {/* endsection */}
         </VStack>
       </Box>
     </>
   );
 }
+
+export function WhatIsVin() {
+    return (
+        <Popover placement='top-start'>
+            <PopoverTrigger>
+                <Text
+                    pb="2"
+                    fontSize="11"
+                    fontWeight="semibold"
+                    color={mode("gray.500", "gray.400")}
+                >
+                    {" "}
+                    <a href="#">
+                    What is VIN?
+                    </a>
+                </Text>
+            </PopoverTrigger>
+            <PopoverContent>
+                <PopoverHeader fontWeight='medium' fontSize="14px">What is a VIN</PopoverHeader>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverBody fontWeight="regular" fontSize="12" color={mode("subHeadingColor", "gray.400")}>
+                    <Text py="2">A vehicle identification number (VIN) is a unique code, including a serial number used by the automotive industry to identify individual motor vehicles, towed vehicles, motorcycles, scooters and mopeds as defined in ISO 3779 and ISO 4030.</Text>
+                </PopoverBody>
+            </PopoverContent>
+        </Popover>
+    )
+}
+
+export function WhereToFindVin() {
+    return (
+        <Popover placement='top-start'>
+            <PopoverTrigger>
+                <Text
+                    pb="2"
+                    fontSize="11"
+                    fontWeight="semibold"
+                    color={mode("gray.500", "gray.400")}
+                >
+                    {" "}
+                    <a href="#">
+                    Where can I find it?
+                    </a>
+                </Text>
+            </PopoverTrigger>
+            <PopoverContent>
+                <PopoverHeader fontWeight='medium' fontSize="14px">Where can I find it?</PopoverHeader>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverBody fontWeight="regular" fontSize="12" color={mode("subHeadingColor", "gray.400")}>
+                    <Text py="2">You can find your VIN through the lower right of the windshield, and under the hood of your front engine. As for motorcycle VIN, you can find your VIN on the motorcycle frame. </Text>
+                </PopoverBody>
+            </PopoverContent>
+        </Popover>
+    )
+}
+export function WhatReportDoIGetForFree() {
+    return (
+        <Popover placement='top-start'>
+            <PopoverTrigger>
+                <Text
+                    pb="2"
+                    fontSize="11"
+                    fontWeight="semibold"
+                    color={mode("gray.500", "gray.400")}
+                >
+                    {" "}
+                    <a href="#">
+                    What report do I get for free?
+                    </a>
+                </Text>
+            </PopoverTrigger>
+            <PopoverContent>
+                <PopoverHeader fontWeight='medium' fontSize="14px">What report do I get for free?</PopoverHeader>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverBody fontWeight="regular" fontSize="12" color={mode("subHeadingColor", "gray.400")}>
+                    <Text py="2">Using our free VIN decoder, you get basic, detailed reports about your vehicle(s). These reports give you an insightful direction on concise decision to take on your vehicle(s). However, if you need to get deep analysis and report of your vehicle including <Box as="span" className={styles.emphasis}>title check, theft check,</Box> e.t.c. You'd have to pay small token to get these second to none class of information on your vehicle(s).</Text>
+                </PopoverBody>
+            </PopoverContent>
+        </Popover>
+    )
+}
+
 
 type tableItems = {
   id: number;
@@ -399,5 +506,41 @@ const tableItems: tableItems = [
     value: 5,
   },
 ];
+
+const carInfo = [
+    {
+        id: 1,
+        name: "Car servicing info"
+    },
+    {
+        id: 2,
+        name: "Odometer accuracy check"
+    },
+    {
+        id: 3,
+        name: "Car condition check against listings"
+    },
+    {
+        id: 4,
+        name: "Vehicle crucial OEM recalls"
+    },
+    {
+        id: 5,
+        name: "Vehicle Safety & Security"
+    },
+    {
+        id: 6,
+        name: "Accident History"
+    },
+    {
+        id: 7,
+        name: "Price History & Mileage Check"
+    },
+    {
+        id: 8,
+        name: "Vehicle Theft History"
+    },
+
+]
 
 export default LeftSection;

@@ -125,7 +125,6 @@ export default function Benefit() {
 								animate={controls}
 								variants={buttonVariant}
 								ref={ref}
-
 							>
 								<HStack>
 									<Text>Get in touch with us </Text>

@@ -92,7 +92,7 @@ export default function UserReview() {
             <Box maxW="5xl" mx="auto" pb="16">
                 <Slider {...settings}>
                 {ReviewItems.map(review => (
-                        <GridComponent id={review.id} custom={review.id} imageUrl={review.imageUrl} name={review.name} review={review.review} rating={review.star} position={review.position} />
+                        <GridComponent key={review.id} id={review.id} custom={review.id} imageUrl={review.imageUrl} name={review.name} review={review.review} rating={review.star} position={review.position} />
                     ))}
                 </Slider>
             </Box>

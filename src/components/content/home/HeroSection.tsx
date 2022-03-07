@@ -78,7 +78,7 @@ export default function HeroSection() {
                               </Box>
                           </Stack>
                           <Text fontSize="11px" fontStyle="italic" py="2" color="skyBlue">
-                            <a href="" onClick={generateVIN}>
+                            <a href="#" onClick={generateVIN}>
                             Click here to test with a random VIN.
                             </a>
                           </Text>
