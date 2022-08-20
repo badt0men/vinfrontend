@@ -30,7 +30,7 @@ export default function WhatWeOffer() {
       }, [controls, inView]);
     
     return (
-        <Box maxW="7xl" mx="auto" bg={mode('skyBlue', 'deepBlue.100')} minH={["800", "0"]} pb={['12', '0']}>
+        <Box w="100%" mx="auto" bg={mode('skyBlue', 'deepBlue.100')} minH={["800", "0"]} pb={['12', '0']}>
             <Flex pl={["0","16"]} py={["16", "20"]}  direction={["column", "row"]} bgImage="url('../image/icons/girlie.svg')" bgPosition={["center 100%", "center right"]} bgRepeat="no-repeat" bgSize={["400px", "750px"]}>
                 <Box px={[0, 20]} pb={["44", "0"]} mb={['16','0']}>
                     <VStack>

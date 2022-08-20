@@ -9,10 +9,10 @@ import Link from 'next/link'
 export default function Footer() {
     return (
         <>
-            <Box maxW="7xl" h="100%" mx="auto" position="relative">
+            <Box w="100%" h="100%" mx="auto" position="relative">
             {/* <Box bgImage={mode("/image/assets/footerWave.svg","/image/assets/footerWave2.svg")} bgSize="cover" h={["120px","180px"]} mt={["-100px","-20px"]} zIndex="999999"/> */}
-            <Box bgColor={mode("deepBlue.100", "deepBlue.300")} mt={["100px", "0px"]} py={["0px","100px"]}>
-                <Box maxW="5xl" mx="auto" >
+                <Box bgColor={mode("deepBlue.100", "deepBlue.200")} pt={["100px", "100px"]} pb={["0px", "100px"]}>
+                    <Box w={["100%", "80%"]} mx="auto" >
                 <Flex justify="space-between" direction={[ 'column', 'row' ]} px={["8","0"]}>
                     <Box color="skyBlue" pb={["16", "0"]}>
                         <Heading as="h1" fontSize={["18px","24px"]} fontWeight="medium">About Us</Heading>
@@ -35,48 +35,50 @@ export default function Footer() {
                             </HStack>
                         </Box>
                     </Box>
-                    <Box color="skyBlue" pb={["8", "0"]}>
-                        <Heading as="h1" fontSize={["18px","24px"]} fontWeight="medium">Information</Heading>
-                        <Box width="70px" color="red.500" borderBottom="2px" py="2" />
-                        <Box py="8"> 
-                        <List spacing={3} fontSize="14px" fontWeight="regular">
-                            {
-                                Information.map(item => (
-                                    <Link href={item.link} key={item.id} passHref>
-                                        <ListItem>
-                                        {item.menu}
-                                        </ListItem>
-                                    </Link>
-                                    
-                                ))
-                            }
-                        </List>
-                        </Box>   
-                    </Box>
-                    <Box color="skyBlue" pb={["8", "0"]}>
-                        <Heading as="h1" fontSize={["18px","24px"]} fontWeight="medium">Quick Links</Heading>
-                        <Box width="70px" color="red.500" borderBottom="2px" py="2" />
-                        <Box py="8"> 
-                                    <List spacing={3} fontWeight="regular" fontSize="14px">
-                            {
-                                QuickLinks.map(item => (
-                                    <Link href={item.link} key={item.id} passHref>
-                                        <ListItem >
-                                        {item.menu}
-                                        </ListItem>
-                                    </Link> 
-                            ))}
-                        </List>
-                        </Box>
-                    </Box>
+                    <HStack spacing={[100, 200]}>
+                                <Box color="skyBlue" pb={["8", "0"]}>
+                                    <Heading as="h1" fontSize={["18px", "24px"]} fontWeight="medium">Information</Heading>
+                                    <Box width="70px" color="red.500" borderBottom="2px" py="2" />
+                                    <Box py="8">
+                                        <List spacing={3} fontSize="14px" fontWeight="regular">
+                                            {
+                                                Information.map(item => (
+                                                    <Link href={item.link} key={item.id} passHref>
+                                                        <ListItem>
+                                                            {item.menu}
+                                                        </ListItem>
+                                                    </Link>
+
+                                                ))
+                                            }
+                                        </List>
+                                    </Box>
+                                </Box>
+                                <Box color="skyBlue" pb={["8", "0"]}>
+                                    <Heading as="h1" fontSize={["18px", "24px"]} fontWeight="medium">Quick Links</Heading>
+                                    <Box width="70px" color="red.500" borderBottom="2px" py="2" />
+                                    <Box py="8">
+                                        <List spacing={3} fontWeight="regular" fontSize="14px">
+                                            {
+                                                QuickLinks.map(item => (
+                                                    <Link href={item.link} key={item.id} passHref>
+                                                        <ListItem >
+                                                            {item.menu}
+                                                        </ListItem>
+                                                    </Link>
+                                                ))}
+                                        </List>
+                                    </Box>
+                                </Box>
+                    </HStack>
                 </Flex>
                 </Box>
              </Box>   
         </Box>
-        <Box maxW="7xl" mx="auto" borderTop="1px" borderColor="red.100" h={["60px","50px"]}  px={["8", "0"]} py={["4", "0"]}>
-            <Box maxW="5xl" mx="auto"> 
+        <Box w="100%" mx="auto" borderTop="1px" borderColor="red.100" h={["60px","50px"]}  px={["8", "0"]} py={["4", "0"]}>
+            <Box w={["100%", "80%"]} mx="auto"> 
                 <Flex justify="space-between" direction={[ 'column', 'row' ]} textAlign="center">  
-                 <Text fontWeight="light" fontSize="12px" py="4">Copyright &copy; {new Date().getFullYear()}. ONGAD VIN Checker</Text>
+                        <Text fontWeight="light" fontSize="12px" py={["1", "4"]}>Copyright &copy; {new Date().getFullYear()}. ONGAD VIN Checker</Text>
                  <HStack fontWeight={["light", "light" ]} fontSize="12px" spacing={4} py="4" mx={["auto", "0"]}>
                      {
                          footerLink.map(item => (

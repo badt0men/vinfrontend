@@ -56,7 +56,7 @@ export default function Benefit() {
 	}, [controls, inView])
 	
 	return (
-		<Box maxW="7xl" mx="auto" h="100%">
+		<Box w="100%" mx="auto" h="100%">
 			<Flex
 				pl={[ '8', '32' ]}
 				py={[ '16', '20' ]}

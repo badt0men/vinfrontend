@@ -24,7 +24,7 @@ const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Box>
-      <Box maxW="7xl" mx="auto" py={{base: '4', md: '3'}} px={{ base: '6', md: '14' }} bg={mode('white', 'deepBlue.500')} h={{base: '50', md: '10'}}>
+      <Box w="100%" mx="auto" py={{base: '4', md: '3'}} px={{ base: '6', md: '14' }} bg={mode('white', 'deepBlue.500')} h={{base: '50', md: '10'}}>
          <Flex justify="end" fontWeight="regular" fontSize="11">
          <HStack spacing="8">
                 {/* <Link href="/">Sample Requests</Link> */}
@@ -42,7 +42,7 @@ const Header = () => {
          </Flex>
       </Box>
       <Box id="header" as="header" bg={mode('skyBlue', 'deepBlue.100')}>
-        <Box maxW="7xl" mx="auto" py="4" px={{ base: '6', md: '8' }}>
+        <Box w="100%" mx="auto" py="4" px={{ base: '6', md: '8' }}>
           <Flex as="nav" justify="space-between">
             <HStack spacing="32">
               <Link href="/">
