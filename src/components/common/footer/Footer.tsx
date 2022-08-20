@@ -9,16 +9,16 @@ import Link from 'next/link'
 export default function Footer() {
     return (
         <>
-        <Box maxW="7xl" mx="auto">
-            <Box bgImage={mode("../image/assets/footerWave.svg","../image/assets/footerWave2.svg")} bgSize="cover" h={["120px","180px"]} mt={["-100px","-150px"]}/>
-            <Box bgColor={mode("deepBlue.100", "")} pb={["0","100px"]}>
+            <Box maxW="7xl" h="100%" mx="auto" position="relative">
+            {/* <Box bgImage={mode("/image/assets/footerWave.svg","/image/assets/footerWave2.svg")} bgSize="cover" h={["120px","180px"]} mt={["-100px","-20px"]} zIndex="999999"/> */}
+            <Box bgColor={mode("deepBlue.100", "deepBlue.300")} mt={["100px", "0px"]} py={["0px","100px"]}>
                 <Box maxW="5xl" mx="auto" >
                 <Flex justify="space-between" direction={[ 'column', 'row' ]} px={["8","0"]}>
                     <Box color="skyBlue" pb={["16", "0"]}>
-                        <Heading as="h1" fontSize={["22px","28px"]} fontWeight="medium">About Us</Heading>
+                        <Heading as="h1" fontSize={["18px","24px"]} fontWeight="medium">About Us</Heading>
                         <Box width="70px" color="red.500" borderBottom="2px" py="2" />
                         <Box py="8" maxW="md">
-                            <Text fontWeight="regular" fontSize="16px">
+                            <Text fontWeight="regular" fontSize="14px">
                                 Spend a minute to get a detailed vehicle 
                                 history report today and avoid years of dealing 
                                 with underlying hidden problems. 
@@ -36,13 +36,13 @@ export default function Footer() {
                         </Box>
                     </Box>
                     <Box color="skyBlue" pb={["8", "0"]}>
-                        <Heading as="h1" fontSize={["22px","28px"]} fontWeight="medium">Information</Heading>
+                        <Heading as="h1" fontSize={["18px","24px"]} fontWeight="medium">Information</Heading>
                         <Box width="70px" color="red.500" borderBottom="2px" py="2" />
                         <Box py="8"> 
-                        <List spacing={3} fontWeight="medium">
+                        <List spacing={3} fontSize="14px" fontWeight="regular">
                             {
                                 Information.map(item => (
-                                    <Link href={item.link} key={item.id}>
+                                    <Link href={item.link} key={item.id} passHref>
                                         <ListItem>
                                         {item.menu}
                                         </ListItem>
@@ -54,10 +54,10 @@ export default function Footer() {
                         </Box>   
                     </Box>
                     <Box color="skyBlue" pb={["8", "0"]}>
-                        <Heading as="h1" fontSize={["22px","28px"]} fontWeight="medium">Quick Links</Heading>
+                        <Heading as="h1" fontSize={["18px","24px"]} fontWeight="medium">Quick Links</Heading>
                         <Box width="70px" color="red.500" borderBottom="2px" py="2" />
                         <Box py="8"> 
-                        <List spacing={3} fontWeight="medium">
+                                    <List spacing={3} fontWeight="regular" fontSize="14px">
                             {
                                 QuickLinks.map(item => (
                                     <Link href={item.link} key={item.id} passHref>
@@ -73,14 +73,14 @@ export default function Footer() {
                 </Box>
              </Box>   
         </Box>
-        <Box maxW="7xl" mx="auto" bgColor={mode("skyBlue", "deepBlue.100")} h={["120px","50px"]} px={["8", "0"]} py={["4", "0"]}>
+        <Box maxW="7xl" mx="auto" borderTop="1px" borderColor="red.100" h={["60px","50px"]}  px={["8", "0"]} py={["4", "0"]}>
             <Box maxW="5xl" mx="auto"> 
                 <Flex justify="space-between" direction={[ 'column', 'row' ]} textAlign="center">  
-                 <Text fontWeight="light" fontSize="14px" py="4">Copyright © 2021. ONGAD VIN Checker</Text>
-                 <HStack fontWeight={["medium", "regular" ]} fontSize="14px" spacing={4} mx={["auto", "0"]}>
+                 <Text fontWeight="light" fontSize="12px" py="4">Copyright &copy; {new Date().getFullYear()}. ONGAD VIN Checker</Text>
+                 <HStack fontWeight={["light", "light" ]} fontSize="12px" spacing={4} py="4" mx={["auto", "0"]}>
                      {
                          footerLink.map(item => (
-                             <Link href={item.link} key={item.id} passHref>
+                             <Link href={item.link} key={item.id}  passHref>
                                 <Text>{item.menu}</Text>
                              </Link>
                          ) )

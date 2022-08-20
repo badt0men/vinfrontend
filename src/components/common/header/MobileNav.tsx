@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {
   Box,
   Button,
@@ -135,12 +136,13 @@ export const MobileNav = () => {
                   </Center>
                 </Box>
               </Flex>
-              <SimpleGrid as="nav" gap="6" mt="8" columns={{ base: 1, sm: 2 }}>
-                <NavLink.Mobile icon={RiHome5Fill}>Home</NavLink.Mobile>
-                <NavLink.Mobile icon={GiMultiDirections}>Guide</NavLink.Mobile>
-                <NavLink.Mobile icon={BsPatchQuestionFill}>FAQ</NavLink.Mobile>
-                <NavLink.Mobile icon={FaBlog}>Blog</NavLink.Mobile>
-                <NavLink.Mobile icon={MdContacts}>Contact</NavLink.Mobile>
+              <SimpleGrid as="nav" gap="8" mt="8" columns={{ base: 1, sm: 2 }}>
+                <NavLink.Mobile>Home</NavLink.Mobile>
+                <NavLink.Mobile>Guide</NavLink.Mobile>
+                <NavLink.Mobile>FAQ</NavLink.Mobile>
+                <NavLink.Mobile>Blog</NavLink.Mobile>
+                <NavLink.Mobile>Contact</NavLink.Mobile>
+                <NavLink.Mobile><span className="emphasisColor">Buy Luxury Cars</span></NavLink.Mobile>
               </SimpleGrid>
               <VStack mt="8" spacing="4">
                 <Button w="full" bgGradient='linear(to-t, red.200, red.100)' rounded="md" color="white" _hover={{bgGradient: 'linear(to-r, red.200, red.100)'}}>

@@ -1,0 +1,8 @@
+.shadowBottom {
+    box-shadow: 0 4px 2px -2px #80808024;
+}
+
+.emphasis{
+    font-weight: bold;
+    color:"red"
+}

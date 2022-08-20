@@ -6,7 +6,9 @@ import WhatWeOffer from '../src/components/content/home/WhatWeOffer'
 import Benefit from '../src/components/content/home/Benefit'
 import UserReview from '../src/components/content/home/UserReview'
 
+
 const Index: NextPage = () => {
+  
   return (
     <>
     <Head>
@@ -19,6 +21,7 @@ const Index: NextPage = () => {
     <WhatWeOffer />
     <Benefit />
     <UserReview />
+
     </>
   )
 }

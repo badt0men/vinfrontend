@@ -1,1 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+.stickyHeader {
+    position: -webkit-fixed;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.centerText {
+}
+.emphasisColor{
+    color: #319795;
+}
+
+.hideScrollBar{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+}
+.hideScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
+
+@media screen and (max-width:768px){
+    .centerText{
+        text-align: center!important;
+    }
+}
