@@ -31,25 +31,22 @@ import {
   BsShieldFillExclamation,
   BsShieldSlashFill,
 } from "react-icons/bs";
-import vinStore from "../../../../store/store";
 import styles from "./report.module.css";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import {motion} from 'framer-motion' 
 import { MdCheckCircle } from "react-icons/md";
+import { useAppSelector } from "../../../../state/store";
+import { AppButton } from "../../Buttons/AppButton";
+import { Router } from "next/router";
 
 //Left section component
 const LeftSection = ({ data }: any) => {
+  const vin = useAppSelector(state => state.vin.value);
 
-    ///necessary because of some hydration issue
-    const [vin, setVin] = useState(null);
-    const evin = vinStore(state => state.vin)
-    useEffect(() => {
-        setVin(evin);
-    },[])
   return (
     <>
-      <Box w="75%" py="8" pos="relative">
+      <Box w={{base:'100%', md:'100%', lg:'100%'}} py="8" pos="relative">
         <TopMenuSection  vin={vin}/>
         <TopContentSection data={data} vin={vin} />
       </Box>
@@ -63,55 +60,53 @@ export function TopMenuSection({vin}:any) {
     <>
       <Box
         className={styles.shadowBottom}
-        bg={mode("", "#1d273a")}
+        bg={mode("#FFFFFF", "#1d273a")}
         borderBottomRadius="4px"
-        h="40px"
+        h={{base:'60px', md:"40px"}}
         w="100%"
         pos="absolute"
         top={0}
         left={0}
       >
-        <Flex maxW="90%" mx="auto">
-          <Link href="/">
-            <Heading
-              as="h1"
-              fontWeight="medium"
-              p="3"
-              fontSize="14px"
+          <HStack width={{ base: '100%', md:'100%', lg:'90%' }} mx="auto" overflow={'scroll'} flexDirection={'row'} bg={mode("", "#1d273a")}>
+          <Link href="/" passHref>
+            <Text
+              fontWeight="regular"
+              p="1"
+              fontSize="12px"
               color="red.500"
             >
               Home
-            </Heading>
+            </Text>
           </Link>
-          <Heading as="h1" fontWeight="medium" p="3" fontSize="14px">
+          <Text fontWeight="regular" p="3" fontSize="12px">
             /
-          </Heading>
-          <Link href="#">
-            <Heading
-              as="h1"
-              fontWeight="medium"
-              p="3"
-              fontSize="14px"
+          </Text>
+          <Link href="#" passHref>
+            <Text
+              fontWeight="regular"
+              p="1"
+              fontSize="12px"
               color="teal"
             >
               Vehicle Report
-            </Heading>
+            </Text>
           </Link>
-          <Heading as="h1" fontWeight="medium" p="3" fontSize="14px">
+          <Text fontWeight="regular" p="3" fontSize="12px">
             /
-          </Heading>
-          <Link href="#">
-            <Heading
-              as="h2"
-              fontWeight="medium"
-              p="3"
-              fontSize="14px"
+          </Text>
+          <Link href="#" passHref>
+            <Text
+              fontWeight="regular"
+              p="1"
+              fontSize="12px"
               color={mode("gray.500", "")}
             >
               Check {vin}
-            </Heading>
+            </Text>
           </Link>
-        </Flex>
+          </HStack>
+
       </Box>
     </>
   );
@@ -145,9 +140,9 @@ export function TopContentSection({ data , vin }: any) {
   
   return (
     <>
-      <Box mt="16" maxH="80vh" pb="20%" overflowY="auto">
+      <Box pt="16" h="100vh" overflowY="scroll" className="hideScrollBar">
         <VStack>
-          <Flex w="100%" px="12">
+          <Flex w="100%" px="12" flexDirection={{base:'column',md:'column', lg:'row'}}>
             <Box boxSize="250" minW="250">
               <Image
                 src="/image/assets/noimageavailable.png"
@@ -167,7 +162,7 @@ export function TopContentSection({ data , vin }: any) {
                 textAlign={"left"}
                 fontSize="28"
               >
-                {data.years[0]?.year} {data?.make?.name} {data?.model?.name}
+                {data?.years[0]?.year} {data?.make?.name} {data?.model?.name}
               </Heading>
               <Text
                 fontWeight="bold"
@@ -185,7 +180,7 @@ export function TopContentSection({ data , vin }: any) {
                   textTransform="capitalize"
                   fontWeight="normal"
                   textAlign={"left"}
-                  fontSize="15"
+                  fontSize="14"
                   mt="2"
                   color={mode("subHeadingColor", "gray.400")}
                 >
@@ -197,7 +192,7 @@ export function TopContentSection({ data , vin }: any) {
                 <Text
                   fontWeight="normal"
                   textAlign={"left"}
-                  fontSize="15"
+                  fontSize="14"
                   mt="2"
                   color={mode("subHeadingColor", "gray.400")}
                 >
@@ -209,7 +204,7 @@ export function TopContentSection({ data , vin }: any) {
                 <Text
                   fontWeight="normal"
                   textAlign={"left"}
-                  fontSize="15"
+                  fontSize="14"
                   mt="2"
                   color={mode("subHeadingColor", "gray.400")}
                 >
@@ -218,7 +213,7 @@ export function TopContentSection({ data , vin }: any) {
                 <Text
                   fontWeight="normal"
                   textAlign={"left"}
-                  fontSize="15"
+                  fontSize="14"
                   mt="2"
                   color={mode("subHeadingColor", "gray.400")}
                 >
@@ -231,25 +226,14 @@ export function TopContentSection({ data , vin }: any) {
                 </Text>
               </SimpleGrid>
               <HStack mt="4">
-                <Button colorScheme="teal">
-                  <Link href="/">
-                    <Text fontWeight="medium" fontSize="12">
-                      Edit VIN
-                    </Text>
-                  </Link>
-                </Button>
-                <Button
-                  bgGradient="linear(to-t, red.200, red.100)"
-                  rounded="md"
-                  color="white"
-                  _hover={{ bgGradient: "linear(to-r, red.200, red.100)" }}
-                  fontSize="16px"
-                  fontWeight="medium"
-                >
-                  <Text fontWeight="semibold" fontSize="12">
-                    Speak to our experts
-                  </Text>
-                </Button>
+                <Link href="/" passHref>
+                  <AppButton teal>
+                    Edit VIN
+                  </AppButton>
+                </Link>
+                <AppButton red>
+                  Speak to out experts
+                </AppButton>
               </HStack>
               <Box py="2">
                 <Text fontSize="11px" color="gray.500">
@@ -302,7 +286,6 @@ export function TopContentSection({ data , vin }: any) {
                 "linear(to-t, gray.600, #1A202C)"
               )}
               h="130px"
-              align="center"
               mt="-70px"
               position="relative"
               opacity=".7"
@@ -345,9 +328,9 @@ export function TopContentSection({ data , vin }: any) {
                 ))}
               </SimpleGrid>
               <Box py="10">
-              <Badge bg={mode("skyBlue", "deepBlue.100")} rounded="md" color={mode("myGray", "skyBlue" )} borderRadius={5}>
-                        <Text fontSize="16px" fontWeight="medium" textTransform="unset"  p="4" >
-                            <Box as ="span" color="red.100">Great News!: </Box> We found {} historical records for this vehicl
+              <Badge bg={mode("skyBlue", "deepBlue.100")} rounded="md" color={mode("myGray", "skyBlue" )} borderRadius={5} maxW='100%'>
+                        <Text fontSize={{ base:'14px', md:'16px'}} fontWeight="medium" textTransform="unset"  p="4" maxW='100%' overflow={'scroll'}>
+                            <Box as ="span" color="red.100">Great News!: </Box> We found {} historical records for this vehicle
                         </Text>
               </Badge>
               </Box>
@@ -435,7 +418,7 @@ export function WhatReportDoIGetForFree() {
                 <PopoverArrow />
                 <PopoverCloseButton />
                 <PopoverBody fontWeight="regular" fontSize="12" color={mode("subHeadingColor", "gray.400")}>
-                    <Text py="2">Using our free VIN decoder, you get basic, detailed reports about your vehicle(s). These reports give you an insightful direction on concise decision to take on your vehicle(s). However, if you need to get deep analysis and report of your vehicle including <Box as="span" className={styles.emphasis}>title check, theft check,</Box> e.t.c. You'd have to pay small token to get these second to none class of information on your vehicle(s).</Text>
+                    <Text py="2">Using our free VIN decoder, you get basic, detailed reports about your vehicle(s). These reports give you an insightful direction on concise decision to take on your vehicle(s). However, if you need to get deep analysis and report of your vehicle including <Box as="span" className={styles.emphasis}>title check, theft check,</Box> e.t.c. You&apos;d have to pay small token to get these second to none class of information on your vehicle(s).</Text>
                 </PopoverBody>
             </PopoverContent>
         </Popover>

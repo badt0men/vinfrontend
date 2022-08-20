@@ -86,7 +86,7 @@ export default function UserReview() {
                 variants={reviewDescriptionVariant}
                 ref={ref}
                 >
-                <Text textAlign="center" py="6" px={["6", "0"]} fontSize={["17","16"]} fontWeight="regular">Whether you’re just buying a car, or just learning about your own <br />We’ve got you covered</Text>
+                <Text textAlign="center" py="6" px={["6", "0"]} fontSize={16} fontWeight="regular">Whether you’re just buying a car, or just learning about your own <br />We’ve got you covered</Text>
                 </MotionBox>
             </Box>
             <Box maxW="5xl" mx="auto" pb="16">

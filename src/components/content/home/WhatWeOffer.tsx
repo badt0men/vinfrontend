@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Box, Flex, Heading, List, Image, ListItem, useColorModeValue as mode, VStack, HStack, Button, Spacer } from '@chakra-ui/react'
+import { Text, Box, Flex, Heading, List, Image, ListItem, useColorModeValue as mode, VStack, HStack, Button, Spacer } from '@chakra-ui/react'
 import {BoxProps, HeadingProps} from '@chakra-ui/layout'
 import { BsArrowRight } from 'react-icons/bs'
 import Link from 'next/link'
@@ -7,7 +7,7 @@ import {motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import {titleVariant, descriptionVariant, listVariant, readMoreVariant} from './_homeAnimation'
 
-const ListIcon = <Image src="../image/icons/point.svg" boxSize="16px" objectFit="contain" alt="searchIcon"  />
+const ListIcon = <Image src="../image/icons/point.svg" boxSize="14px" objectFit="contain" alt="searchIcon"  />
     
 const MotionBox = motion<BoxProps>(Box)
 const MotionHeading = motion<HeadingProps>(Heading)
@@ -36,12 +36,12 @@ export default function WhatWeOffer() {
                     <VStack>
                         <Box>
                         <MotionHeading ref={ref} initial="hidden" animate={controls} variants={titleVariant}>
-                        <Heading as="h1" fontSize={["18","22"]} fontWeight="medium" color={mode('deepBlue.100', 'skyBlue')}>What we Offer
-                        </Heading>
+                        <Text fontSize={["14","18"]} fontWeight="medium" color={mode('teal.500', 'teal.400')}>What we Offer
+                        </Text>
                         </MotionHeading>
                         <MotionHeading ref={ref} initial="hidden" animate={controls} variants={descriptionVariant} >
-                        <Heading as="h1" fontSize={["20","28"]} py="8" color={mode('headingColor', 'skyBlue')} fontWeight="medium">We provide Naija with<br/> the most comprehensive<br/> and up to date report in the market
-                        </Heading>
+                        <Text fontSize={["18","24"]} py="8" color={mode('headingColor', 'skyBlue')} fontWeight="medium">We provide Naija with<br/> the most comprehensive<br/> and up to date report in the market
+                        </Text>
                         </MotionHeading>
                         <List spacing={3} >
                                 {listText.map(list => (
@@ -49,9 +49,9 @@ export default function WhatWeOffer() {
                                     <MotionHeading ref={ref} whileHover="hover" custom={list.id} initial="hidden" animate={controls} variants={listVariant}>
                                     <HStack>
                                     {ListIcon} 
-                                    <Heading as="p" fontSize="15" fontWeight="regular"  color={mode('headingColor', 'skyBlue')}>
+                                    <Text fontSize="14" fontWeight="regular"  color={mode('headingColor', 'skyBlue')}>
                                     {list.text}
-                                    </Heading>
+                                    </Text>
                                     </HStack>
                                     </MotionHeading>
                                 </ListItem>
@@ -59,11 +59,11 @@ export default function WhatWeOffer() {
                             </List>
                             <Box> 
                                     <MotionHeading ref={ref} initial="hidden" animate={controls} variants={readMoreVariant}>
-                                <Heading as="h3" fontSize="12" textAlign="left" py="8"><Link href="/">Plus lots more...</Link> </Heading>
+                                <Text fontSize="12" textAlign="left" py="8"><Link href="/">Plus lots more...</Link> </Text>
                                     </MotionHeading>
                                 <Button bgGradient="linear(to-t, deepBlue.500, deepBlue.100)" mt={["2","8"]} color="white" rounded="lg" fontWeight="medium" _hover={{bgGradient:"linear(to-r, deepBlue.100, deepBlue.500)"}}>
                                     <HStack>
-                                    <Heading as="p" fontSize="14">Find out more</Heading> 
+                                    <Text fontSize="12">Find out more</Text> 
                                     <BsArrowRight />
                                     
                                     </HStack>

@@ -38,7 +38,7 @@ const leftImage: ImageProps = {
 };
 
 const MotionBox = motion<BoxProps>(Box)
-const MotionHeading = motion<HeadingProps>(Heading)
+const MotionText = motion<HeadingProps>(Heading)
 const MotionButton = motion<ButtonProps>(Button)
 
 
@@ -56,7 +56,7 @@ export default function Benefit() {
 	}, [controls, inView])
 	
 	return (
-		<Box maxW="7xl" mx="auto">
+		<Box maxW="7xl" mx="auto" h="100%">
 			<Flex
 				pl={[ '8', '32' ]}
 				py={[ '16', '20' ]}
@@ -68,12 +68,11 @@ export default function Benefit() {
 				w="400"
 				h="650"
 			>
-				<Box>
+				<Box py="10">
 					<VStack>
 						<Box>
-							<MotionHeading
-								as="h1"
-								fontSize={[ '24', '48' ]}
+							<MotionText
+								fontSize={[ '22', '38' ]}
 								color={mode('deepBlue.100', 'skyBlue')}
 								fontWeight="medium"
 								initial="hidden"
@@ -82,10 +81,10 @@ export default function Benefit() {
 								ref={ref}
 							>
 								Benefits of Checking<br /> Vehicle History Report{' '}
-							</MotionHeading>
+							</MotionText>
 							<MotionBox 
 								py="8"
-								fontSize={[ '15', '17' ]}
+								fontSize={[ '14', '16' ]}
 								color={mode('headingColor', 'skyBlue')}
 								fontWeight="regular"
 								maxW="600px"
@@ -96,7 +95,7 @@ export default function Benefit() {
 								ref={ref}
 
 								>
-							<Text>
+							<Text fontSize={["13", "14"]}>
 								It’s very important to know a vehicle history when you are buying a vehicle on the
 								secondary market. Car history check is a must especially with such a large used
 								car market in Nigeria.
@@ -104,14 +103,14 @@ export default function Benefit() {
 								high.<br/> Vehicle information will help you avoid problems.
 							</Text>
 							</MotionBox>
-							<MotionHeading as="h1" fontWeight="medium" fontSize={['15', '16']}
+							<MotionText fontWeight="medium" fontSize={['14', '16']}
 							initial="hidden"
 							animate={controls}
 							variants={benefitConsultUsVariant}
 							ref={ref}
 							>
 								Want a free consultation from ONGAD experts?
-							</MotionHeading>
+							</MotionText>
 							<Spacer my="8" />
 							<MotionButton
 								maxW={[ '100%', '40%' ]}
@@ -119,7 +118,7 @@ export default function Benefit() {
 								rounded="md"
 								color="white"
 								_hover={{ bgGradient: 'linear(to-r, red.200, red.100)' }}
-								fontSize="16px"
+								fontSize="14px"
 								fontWeight="medium"
 								initial="hidden"
 								animate={controls}
@@ -135,7 +134,7 @@ export default function Benefit() {
 					</VStack>
 				</Box>
 				
-				<MotionBox position="relative" ml={[ '0', '8' ]} mt={[ '8', '0' ]} animate={{opacity: 1}} whileHover={{rotate: 10}} whileTap={{rotate: 10}}>
+				<MotionBox position="relative" ml={[ '0', '8' ]} mt={[ '8', '0' ]} animate={{opacity: 1}} whileHover={{rotate: 5}} whileTap={{rotate: 5}}>
 
 					<Box
 						maxW="350"
@@ -149,14 +148,13 @@ export default function Benefit() {
 
 					<Image
 						src={manImage.imageUrl}
-						imagealt={manImage.imageAlt}
+						alt={manImage.imageAlt}
 						w={350}
 						h={470}
 						rounded={`lg`}
 						pos="relative"
 						top={[ '-50%', '-96%' ]}
 						left="0"
-						alt={manImage.imageAlt}
 					/>
 					
 				</MotionBox>

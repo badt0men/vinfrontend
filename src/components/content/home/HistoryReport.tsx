@@ -25,12 +25,12 @@ export default function HistoryReport() {
   return (
     <Box maxW="7xl" mx="auto">
         <MotionBox ref={ref} initial="hidden" animate={controls} variants={historySectionVariant}>
-        <Box justify="center">
-            <Heading as="h1" fontSize={['25', '37']} pt="20" textAlign="center" color={mode('headingColor', 'skyBlue')} fontWeight="medium">
+        <Box justifyContent="center">
+            <Heading as="h1" fontSize={['22', '32']} pt="20" textAlign="center" color={mode('headingColor', 'skyBlue')} fontWeight="medium">
             Shorten And Amplify Your<br/>
             Car History Report
             </Heading>
-            <Heading as="h2" fontSize={['14', '22']} py="8" textAlign="center" color={mode('subHeadingColor', 'skyBlue')} fontWeight="regular">
+            <Heading as="h2" fontSize={['14', '18']} py="8" textAlign="center" color={mode('subHeadingColor', 'skyBlue')} fontWeight="regular">
                 Meet Our Intuitive Platform
             </Heading>
         </Box>
@@ -42,14 +42,14 @@ export default function HistoryReport() {
               <SimpleGrid columns={[2, 4]} spacing="10">
                   {boxItems.map((boxItem) => 
                     <MotionBox ref={ref} custom={boxItem.id} initial="hidden" animate={controls} variants={historyIconsVariant} whileHover="hover" whileTap="tap" key={boxItem.id}>
-                    <Box bg={mode('white', 'deepBlue.100')} h="180px" w="180px" shadow="lg">
+                    <Box bg={mode('white', 'deepBlue.100')} h="180px" w="180px" shadow="lg" borderRadius="xl">
                       <VStack px="4">
                         {boxItem.icon}
                         <Heading as="h1" fontSize={['12', '14']} textAlign="center" fontWeight="medium" mt="4">{boxItem.title}</Heading>
                         <Spacer />
                         <Box border='1px' w="50%" borderStyle="dashed" />
                         <Spacer />
-                        <Text fontSize={['11', '11']} textAlign="center" fontWeight="regular" color={mode('subHeadingColor', '')} >{boxItem.description}</Text>
+                        <Text fontSize={['12', '12']} textAlign="center" fontWeight="regular" color={mode('subHeadingColor', '')} >{boxItem.description}</Text>
                       </VStack>
                     </Box>
                     </MotionBox>
@@ -58,7 +58,7 @@ export default function HistoryReport() {
               </Box>
                 <MotionBox>
                 <Box px={['8', '16']}>
-                    <Heading as="p" fontSize={['17', '19']} textAlign="center" my="8" color={mode('subHeadingColor', '')} fontWeight="light">
+                    <Heading as="p" fontSize={['14', '16']} textAlign="center" my="8" color={mode('subHeadingColor', '')} fontWeight="light">
                     As part of our giveback to the community, ONGAD provides <b>basic free VIN check report</b> to the public to determine the vehicle is a lemon, salvaged or has flooded condition. We also provide historical mileage/sales records for free! No credit card required!
                     </Heading>
                 </Box>

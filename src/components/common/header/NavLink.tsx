@@ -38,13 +38,12 @@ const DesktopNavLink = (props: DesktopNavLinkProps) => {
 }
 
 interface MobileNavLinkProps {
-  icon: React.ElementType
   children: React.ReactNode
   href?: string
 }
 
 const MobileNavLink = (props: MobileNavLinkProps) => {
-  const { icon, children, href } = props
+  const {children, href } = props
   return (
     <Flex
       as="a"
@@ -52,11 +51,12 @@ const MobileNavLink = (props: MobileNavLinkProps) => {
       m="-3"
       p="3"
       align="center"
+      justify="center"
+      textAlign="center"
       rounded="md"
       cursor="pointer"
       _hover={{ bg: mode('gray.50', 'gray.600') }}
     >
-      <Icon as={icon} color={mode('red.100', 'red.100')} fontSize="xl" />
       <Box marginStart="3" fontWeight="medium">
         {children}
       </Box>
