@@ -19,4 +19,5 @@ export const vinSlice = createSlice({
 });
 
 export const { setVin } = vinSlice.actions;
-export default vinSlice.reducer;
+//export default vinSlice.reducer;
+export const vinReducer = vinSlice.reducer;

@@ -3,22 +3,21 @@ import Head from 'next/head';
 import React, { useEffect, useState } from 'react'
 import LeftContent from '../../../src/components/content/vin-report/LeftContent';
 import { RightContent } from '../../../src/components/content/vin-report/RightContent';
-import { useAppSelector } from '../../../state/store';
+import { useAppSelector, useAppDispatch } from '../../../state/store';
 
 export default function Vin() {
-    const vin = useAppSelector(state => state.vin.value);
-    const [data, setData] = useState<any>();
-
-    const END_POINT = process.env.VIN_URI + vin + `?apikey=` + process.env.VIN_API_KEY
-    useEffect(() => {
-            const fetchData = async () => {
-            const res =  await fetch(END_POINT)
-            const data = await res.json()
-            setData(data)
-        };
-        fetchData();
-    }, [END_POINT])
+    const vin:string = useAppSelector(state => state.vin.value)
+    const [vinData, setVinData] = useState<any>()
+    const { data } = useAppSelector(state => state.vehicleReport)
     
+    useEffect(() => { 
+        const local:any = localStorage.getItem('vin-data')
+        const localData = JSON.parse(local)
+        if (localData.vin !== vin){
+            setVinData(data)
+        }
+        setVinData(localData)
+    }, [data, vin]);
     
     return (<>
     <Head>
@@ -26,9 +25,10 @@ export default function Vin() {
     </Head>
     <Box w="100%">
         <Flex w='100%' h="100vh" mx="auto" flexDirection={{base:'column', md: 'column', lg:'row'}}>
-            <LeftContent data={data}/>
-            <RightContent data={data} />
+            <LeftContent data={vinData}/>
+            <RightContent data={vinData} />
         </Flex>
     </Box>
-    </>)
+    </>
+    )
 }

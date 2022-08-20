@@ -41,21 +41,29 @@ import { AppButton } from "../../Buttons/AppButton";
 import { Router } from "next/router";
 
 //Left section component
-const LeftSection = ({ data }: any) => {
-  const vin = useAppSelector(state => state.vin.value);
-
+const LeftSection = ({ data }:any) => {
+  const vin = useAppSelector(state => state.vin.value)
+  
   return (
     <>
       <Box w={{base:'100%', md:'100%', lg:'100%'}} py="8" pos="relative">
-        <TopMenuSection  vin={vin}/>
-        <TopContentSection data={data} vin={vin} />
+        <TopMenuSection/>
+        <TopContentSection data={data}/>
       </Box>
     </>
   );
 };
 
-export function TopMenuSection({vin}:any) {
+export function TopMenuSection() {
 
+  const [vin, setVin] = useState()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const local:any = localStorage.getItem('vin-data')
+    const localData = JSON.parse(local)
+    setVin(localData.vin)   
+  })
+  
   return (
     <>
       <Box
@@ -68,43 +76,43 @@ export function TopMenuSection({vin}:any) {
         top={0}
         left={0}
       >
-          <HStack width={{ base: '100%', md:'100%', lg:'90%' }} mx="auto" overflow={'scroll'} flexDirection={'row'} bg={mode("", "#1d273a")}>
-          <Link href="/" passHref>
-            <Text
-              fontWeight="regular"
-              p="1"
-              fontSize="12px"
-              color="red.500"
-            >
-              Home
+          <HStack width={['100%','100%']} mx="auto" overflow={'scroll'} flexDirection={'row'} bg={mode("", "#1d273a")}>
+          <Flex flexDir="row" pt={[22, 3]} px={[4, 8]}>
+            <Link href="/" passHref>
+              <Text
+                fontWeight="regular"
+                fontSize="12px"
+                color="red.500"
+                cursor="pointer"
+              >
+                Home
+              </Text>
+            </Link>
+            <Text fontWeight="regular" px="2" fontSize="12px">
+              /
             </Text>
-          </Link>
-          <Text fontWeight="regular" p="3" fontSize="12px">
-            /
-          </Text>
-          <Link href="#" passHref>
-            <Text
-              fontWeight="regular"
-              p="1"
-              fontSize="12px"
-              color="teal"
-            >
-              Vehicle Report
+            <Link href="#" passHref>
+              <Text
+                fontWeight="regular"
+                fontSize="12px"
+                color="teal"
+              >
+                Vehicle Report
+              </Text>
+            </Link>
+            <Text fontWeight="regular" px="2" fontSize="12px">
+              /
             </Text>
-          </Link>
-          <Text fontWeight="regular" p="3" fontSize="12px">
-            /
-          </Text>
-          <Link href="#" passHref>
-            <Text
-              fontWeight="regular"
-              p="1"
-              fontSize="12px"
-              color={mode("gray.500", "")}
-            >
-              Check {vin}
-            </Text>
-          </Link>
+            <Link href="#" passHref>
+              <Text
+                fontWeight="regular"
+                fontSize="12px"
+                color={mode("gray.500", "")}
+              >
+                Check {vin}
+              </Text>
+            </Link>
+          </Flex>
           </HStack>
 
       </Box>
@@ -118,7 +126,7 @@ export function TopContentSection({ data , vin }: any) {
   const [initTrim, setInitTrim] = useState(7);
   const allTableData = _.size(tableItems);
   const [hideBtn, setHideBtn] = useState(false);
-
+  
   
   useEffect(() => {
     const items: any = tableItems.slice(0, initTrim);
@@ -142,27 +150,30 @@ export function TopContentSection({ data , vin }: any) {
     <>
       <Box pt="16" h="100vh" overflowY="scroll" className="hideScrollBar">
         <VStack>
-          <Flex w="100%" px="12" flexDirection={{base:'column',md:'column', lg:'row'}}>
-            <Box boxSize="250" minW="250">
-              <Image
-                src="/image/assets/noimageavailable.png"
-                alt="car"
-                borderRadius="10px"
-              />
-              <Box mt="4">
+          <Flex w="100%" px={[6, 12]} flexDirection={{ base: 'column', md: 'column', lg: 'row' }}>
+            <Box>
+              <Box boxSize="250" mx="auto" minW="250">
+                <Image
+                  src="/image/assets/noimageavailable.png"
+                  alt="car"
+                  borderRadius="10px"
+                />
+              </Box>
+              <Flex flexDir={["row", "column"]} gap={[4, 1]} mt="-50">
                 <WhatIsVin />
                 <WhereToFindVin />
                 <WhatReportDoIGetForFree />
-              </Box>
+              </Flex>
             </Box>
-            <Box ml="8">
+            
+            <Box ml={["0","8"]} mt={[4, 0]}>
               <Heading
                 as="h1"
                 color={mode("headingColor", "")}
                 textAlign={"left"}
                 fontSize="28"
               >
-                {data?.years[0]?.year} {data?.make?.name} {data?.model?.name}
+                {data?.years[0]?.year + " " +data?.make?.name + " " +data?.model?.name}
               </Heading>
               <Text
                 fontWeight="bold"
@@ -173,26 +184,26 @@ export function TopContentSection({ data , vin }: any) {
                 textShadow={mode("1px 1px #f4f6fc", "1px 1px #252e4b")}
                 mt="2"
               >
-                VIN {vin}
+                VIN {data?.vin}
               </Text>
               <SimpleGrid columns={2} spacing="1px">
                 <Text
                   textTransform="capitalize"
                   fontWeight="normal"
                   textAlign={"left"}
-                  fontSize="14"
+                  fontSize={[12, 14]}
                   mt="2"
                   color={mode("subHeadingColor", "gray.400")}
                 >
                   Engine:{" "}
                   <Box as="span" fontWeight="medium">
-                    {data?.engine?.type} - {data?.engine?.name}
+                    {data?.engine?.type + ' - ' + data?.engine?.name}
                   </Box>
                 </Text>
                 <Text
                   fontWeight="normal"
                   textAlign={"left"}
-                  fontSize="14"
+                  fontSize={[12, 14]}
                   mt="2"
                   color={mode("subHeadingColor", "gray.400")}
                 >
@@ -204,7 +215,7 @@ export function TopContentSection({ data , vin }: any) {
                 <Text
                   fontWeight="normal"
                   textAlign={"left"}
-                  fontSize="14"
+                  fontSize={[12, 14]}
                   mt="2"
                   color={mode("subHeadingColor", "gray.400")}
                 >
@@ -213,7 +224,7 @@ export function TopContentSection({ data , vin }: any) {
                 <Text
                   fontWeight="normal"
                   textAlign={"left"}
-                  fontSize="14"
+                  fontSize={[12, 14]}
                   mt="2"
                   color={mode("subHeadingColor", "gray.400")}
                 >
@@ -226,16 +237,16 @@ export function TopContentSection({ data , vin }: any) {
                 </Text>
               </SimpleGrid>
               <HStack mt="4">
+                <AppButton teal>
                 <Link href="/" passHref>
-                  <AppButton teal>
                     Edit VIN
-                  </AppButton>
-                </Link>
+                  </Link>
+                </AppButton>
                 <AppButton red>
                   Speak to out experts
                 </AppButton>
               </HStack>
-              <Box py="2">
+              <Box pt="4">
                 <Text fontSize="11px" color="gray.500">
                   You can speak to our vehicle experts on matters relating to
                   your vehicle. We are always ready to lend the best hands in
@@ -246,7 +257,7 @@ export function TopContentSection({ data , vin }: any) {
               </Box>
             </Box>
           </Flex>
-          <Box w="90%" borderRadius="15px">
+          <Box w="90%" borderRadius="15px" pt="10">
             <Table variant="striped" colorScheme="gray">
               <Tbody
                 fontWeight="medium"
@@ -342,6 +353,7 @@ export function TopContentSection({ data , vin }: any) {
   );
 }
 
+// What is VIN popover
 export function WhatIsVin() {
     return (
         <Popover placement='top-start'>
@@ -358,7 +370,7 @@ export function WhatIsVin() {
                     </a>
                 </Text>
             </PopoverTrigger>
-            <PopoverContent>
+        <PopoverContent _focus={{ boxShadow: "none", }}>
                 <PopoverHeader fontWeight='medium' fontSize="14px">What is a VIN</PopoverHeader>
                 <PopoverArrow />
                 <PopoverCloseButton />
@@ -370,6 +382,7 @@ export function WhatIsVin() {
     )
 }
 
+// Where to find VIN popover
 export function WhereToFindVin() {
     return (
         <Popover placement='top-start'>
@@ -386,7 +399,7 @@ export function WhereToFindVin() {
                     </a>
                 </Text>
             </PopoverTrigger>
-            <PopoverContent>
+        <PopoverContent _focus={{ boxShadow: "none", }}>
                 <PopoverHeader fontWeight='medium' fontSize="14px">Where can I find it?</PopoverHeader>
                 <PopoverArrow />
                 <PopoverCloseButton />
@@ -397,6 +410,8 @@ export function WhereToFindVin() {
         </Popover>
     )
 }
+
+// What report do I popover
 export function WhatReportDoIGetForFree() {
     return (
         <Popover placement='top-start'>
@@ -413,7 +428,7 @@ export function WhatReportDoIGetForFree() {
                     </a>
                 </Text>
             </PopoverTrigger>
-            <PopoverContent>
+        <PopoverContent _focus={{ boxShadow: "none", }}>
                 <PopoverHeader fontWeight='medium' fontSize="14px">What report do I get for free?</PopoverHeader>
                 <PopoverArrow />
                 <PopoverCloseButton />
@@ -480,7 +495,7 @@ const tableItems: tableItems = [
   },
   {
     id: 10,
-    title: "Ourneship",
+    title: "Ownership",
     value: 15,
   },
   {

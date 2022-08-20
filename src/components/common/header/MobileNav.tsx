@@ -25,9 +25,10 @@ import {FaBlog} from 'react-icons/fa'
 import {MdContacts} from 'react-icons/md'
 import { RemoveScroll } from 'react-remove-scroll'
 import { NavLink } from './NavLink'
+import { AppButton } from '../../Buttons/AppButton'
 
-const LogoLight = <img src="../image/logo/ongadLogo.svg" width="70" alt="logo" />
-const LogoDark =  <img src="../image/logo/ongadLogoALt.svg" width="70" alt="logo-alt" />
+const LogoLight = <img src="/image/logo/ongadLogo.svg" width="70" alt="logo" />
+const LogoDark =  <img src="/image/logo/ongadLogoALt.svg" width="70" alt="logo-alt" />
 
 const variants: Variants = {
   show: {
@@ -136,19 +137,22 @@ export const MobileNav = () => {
                   </Center>
                 </Box>
               </Flex>
-              <SimpleGrid as="nav" gap="8" mt="8" columns={{ base: 1, sm: 2 }}>
-                <NavLink.Mobile>Home</NavLink.Mobile>
-                <NavLink.Mobile>Guide</NavLink.Mobile>
-                <NavLink.Mobile>FAQ</NavLink.Mobile>
-                <NavLink.Mobile>Blog</NavLink.Mobile>
-                <NavLink.Mobile>Contact</NavLink.Mobile>
+              <SimpleGrid as="nav" gap="8" mt="8" columns={{ base: 1, sm: 2 }} onClick={toggle}>
+                <NavLink.Mobile href="/">Home</NavLink.Mobile>
+                <NavLink.Mobile href="guide">Guide</NavLink.Mobile>
+                <NavLink.Mobile href="faq">FAQ</NavLink.Mobile>
+                <NavLink.Mobile href="blog">Blog</NavLink.Mobile>
+                <NavLink.Mobile href="contact">Contact</NavLink.Mobile>
                 <NavLink.Mobile><span className="emphasisColor">Buy Luxury Cars</span></NavLink.Mobile>
               </SimpleGrid>
               <VStack mt="8" spacing="4">
-                <Button w="full" bgGradient='linear(to-t, red.200, red.100)' rounded="md" color="white" _hover={{bgGradient: 'linear(to-r, red.200, red.100)'}}>
+                {/* <Button w="100%" bgGradient='linear(to-t, red.200, red.100)' rounded="md" color="white" _hover={{bgGradient: 'linear(to-r, red.200, red.100)'}} _focus={{boxShadow: "none"}}>
                   Free VIN Check
-                </Button>
-                <Box textAlign="center" fontWeight="medium">
+                </Button> */}
+                <AppButton>
+                  Free VIN Check
+                </AppButton>
+                <Box textAlign="center" fontWeight="medium" fontSize={12}>
                   Still a guest?{' '}
                   <Box as="a" color={mode('red.100', 'red.100')}>
                     SIGN UP

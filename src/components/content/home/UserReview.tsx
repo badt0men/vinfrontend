@@ -72,7 +72,7 @@ export default function UserReview() {
     }, [controls, inView])
     
     return (
-        <Box maxW="7xl" mx="auto" bgColor={mode("skyBlue", "deepBlue.100")} mt={["90%", "0"]} pb={["32", "52"]}>
+        <Box w="100%" mx="auto" bgColor={mode("skyBlue", "deepBlue.100")} mt={["90%", "0"]} pb={["32", "52"]}>
             <Box pt="20" pb="8">
                 <MotionHeading as="h1" fontSize="28" fontWeight="medium" textAlign="center"
                 initial="hidden"
@@ -89,7 +89,7 @@ export default function UserReview() {
                 <Text textAlign="center" py="6" px={["6", "0"]} fontSize={16} fontWeight="regular">Whether you’re just buying a car, or just learning about your own <br />We’ve got you covered</Text>
                 </MotionBox>
             </Box>
-            <Box maxW="5xl" mx="auto" pb="16">
+            <Box w={["100%", "80%"]} mx="auto" pb="16">
                 <Slider {...settings}>
                 {ReviewItems.map(review => (
                         <GridComponent key={review.id} id={review.id} custom={review.id} imageUrl={review.imageUrl} name={review.name} review={review.review} rating={review.star} position={review.position} />

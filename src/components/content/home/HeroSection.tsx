@@ -5,6 +5,7 @@ import Router from 'next/router'
 import { motion } from 'framer-motion'
 import { useAppSelector, useAppDispatch } from '../../../../state/store';
 import { setVin } from '../../../../state/slices/vinSlice';
+import { fetchVinData } from '../../../../state/slices/vehicleReportSlice';
 
 export const MotionBox = motion<BoxProps>(Box)
 
@@ -22,6 +23,8 @@ export default function HeroSection(): React.ReactElement {
  // Search the vin 
   const searchVin = (e: { preventDefault: () => void }) => {
     e.preventDefault()
+    dispatch(fetchVinData(vin))
+    
     const {pathname} = Router
     if(pathname === '/' ){
         Router.push("/report/vin/" + vin)
@@ -44,9 +47,9 @@ export default function HeroSection(): React.ReactElement {
   }
   
   return (
-    <Box w="full" mx="auto" h="600" bgImage="url('../image/slide/car.jpeg')" bgPosition="center" bgRepeat="no-repeat" bgSize="cover" bgBlendMode="multiply">
-      <Box position="absolute" bgColor="heroOverlay" w="full" h="600">
-          <Box maxW="7xl" mx="auto" py={{base: '16', md: '24'}} px={{ base: '8', md: '14' }}>
+    <Box w="100%" mx="auto" h="600" bgImage="url('../image/slide/car.jpeg')" bgPosition="center" bgRepeat="no-repeat" bgSize="cover" bgBlendMode="multiply">
+      <Box position="absolute" bgColor="heroOverlay" w="100%" h="600">
+          <Box w="100%" mx="auto" py={{base: '16', md: '24'}} px={{ base: '8', md: '14' }}>
                <Flex justify="end">
             <Flex flexDirection="column" w={{ base: "100%", md: "50%" }} mt={{ base: "50px" }} className="centerText">
                       <MotionBox initial={{ opacity: 0, x: 150 }} animate={{ opacity: 1, x: 0, transition:{ fade: 'fadeIn' ,duration: 0.5, delay: .5 } }} >  
@@ -61,7 +64,7 @@ export default function HeroSection(): React.ReactElement {
                       <form onSubmit={searchVin}>
                        {/* Search box */}
                        
-                      <Box w="full" py="8">
+                      <Box w="100%" py="8">
                       <MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1, transition:{ fade: 'fadeIn' ,duration: 1, delay: 1.5 }}}>
                           <Stack direction={['column', 'row']} spacing="4">
                               <Box w={['100%', '70%']}>

@@ -23,7 +23,7 @@ export default function HistoryReport() {
   }, [controls, inView])
   
   return (
-    <Box maxW="7xl" mx="auto">
+    <Box w="100%" mx="auto">
         <MotionBox ref={ref} initial="hidden" animate={controls} variants={historySectionVariant}>
         <Box justifyContent="center">
             <Heading as="h1" fontSize={['22', '32']} pt="20" textAlign="center" color={mode('headingColor', 'skyBlue')} fontWeight="medium">
@@ -37,7 +37,7 @@ export default function HistoryReport() {
         </MotionBox>
         
         <Box py="2">
-            <Box maxW="5xl" mx="auto">
+            <Box w={["100%", "80%"]} mx="auto">
               <Box p={[4, 8]} mr={["4", "0"]}>
               <SimpleGrid columns={[2, 4]} spacing="10">
                   {boxItems.map((boxItem) => 
